@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            font-size: 40px;
+        }
+        div{
+            line-height: 100px;
+            background:black;
+        }
+        .color{
+            color: purple;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>保健用品 二楼右转</p>
+    </div>
+</body>
+<script>
+    var div  = document.getElementsByTagName('div')[0];
+    console.log(div);
+    setInterval(function(){
+    div.classList.add('color');
+    },500)
+    setInterval(function(){
+    div.classList.remove('color');
+    },1000)
+</script>
+</html>
