@@ -43,9 +43,6 @@
             clear: both;
         }
 
-        .nav>li{
-        }
-
         .nav {
             background:grey;
             display: none;
@@ -62,9 +59,26 @@
             right: 20px;
             top: 25px;
         }
+        .nav2{
+            display: none;
+        }
         @media(min-width:450px){
             header >button{
                 display: none;
+            }
+            #yy,.nav.avtive{
+                display:none;
+            }
+            .nav2{
+                display: flex;
+                align-items: center;
+                margin: 20px;
+            }
+            .nav2>li{
+                margin: 0 10px;
+            }
+            header{
+                display: flex;
             }
         }
         header{
