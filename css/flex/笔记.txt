@@ -1,0 +1,12 @@
+flex 之前用什么布局
+主要用
+1.normal flow(正常流 也叫文档流) 内联元素从左到右排列 块级元素 从上往下排列
+2.float + clear 
+3.position relative + absolute 
+4.display inline-block
+5.负 margin
+
+flex 来了
+1.块级布局车种垂直方向 行内布局侧重水平方向 flex布局与方向无光
+2.flex布局可以实现空间制动分配 制动对齐 
+3.flex适用于简单的线性布局 更复杂的用grid布局
