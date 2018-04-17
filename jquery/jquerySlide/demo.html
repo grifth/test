@@ -60,6 +60,7 @@
 		$(allButtons[i]).on('click',function(x){
 			var index = $(x.currentTarget).index();
 			var n =index * -300
+			console.log(n);
 			$('#images').css({
 				transform:'translate('+n+'px)'
 			})
