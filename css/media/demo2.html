@@ -1,40 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 </head>
+
 <body>
     <ul>
-    	<li id="item1"></li>
-    	<li id="item2"></li>
-    	<li id="item3"></li>
-    	<li id="item4"></li>
-    	<li id="item5"></li>
+        <li id="item1"></li>
+        <li id="item2"></li>
+        <li id="item3"></li>
+        <li id="item4"></li>
+        <li id="item5"></li>
     </ul>
- <script>
- 	var allChildren = item3.parentNode.children;
- 	var array = {
- 		length:0
- 	}
- 	var classes = {'a':true,'b':false,'c':true}
- 	for(let i = 0;i < allChildren.length;i++){
- 		if(allChildren[i]!==item3){
- 			array[array.length] = allChildren[i]
- 			array.length ++;
- 		}
- 	}
- 	// for(let key in classes){
- 	// 	var value = classes[key]
- 	// 	if(value){
- 	// 		item3.classList.add(key)
- 	// 	}else{
- 	// 		item3.classList.remove(key)
- 	// 	}
- 	// }
-</script>
+    <script>
+    Node.prototype.getSiblings=function getSiblings() {
+        var allChildren = this.parentNode.children;
+        var array = {
+            length: 0
+        }
+        for (let i = 0; i < allChildren.length; i++) {
+            if (allChildren[i] !== this) {
+                array[array.length] = allChildren[i];
+                array.length++;
+            }
+        }
+        return array;
+    }
+
+   	Node.prototype.addClass=function addClass(classes){
+   		classes.forEach((value)=>this.classList.add(value))
+   	}
+   	item3.addClass(['a','b']);
+   	console.log(item4.getSiblings());
+    var array = {
+        length: 0
+    }
+    var aa = { 'a': true, 'b': false, 'c': true }
+    // addClass(item4,classes);
+    // for(let i = 0;i < allChildren.length;i++){
+    // 	if(allChildren[i]!==item3){
+    // 		array[array.length] = allChildren[i]
+    // 		array.length ++;
+    // 		console.log(array.length);
+    // 	}else{
+    // 		console.log(allChildren[i]);
+    // 	}
+    // }
+    // for(let key in classes){
+    // 	var value = classes[key]
+    // 	if(value){
+    // 		item3.classList.add(key)
+    // 	}else{
+    // 		item3.classList.remove(key)
+    // 	}
+    // }
+    </script>
 </body>
-</html>  
+
+</html>
