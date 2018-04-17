@@ -1,71 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<style>
-		.images{
-			display: -webkit-flex;
-			display: -moz-flex;
-			display: -ms-flex;
-			display: -o-flex;
-			display: flex;
-			align-items: flex-start;
-			transition: transform 1s;
-		}
-		.images>img{
-			
-		}
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    .images {
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        align-items: flex-start;
+        transition: transform 1s;
+    }
 
-		.window{
-			width: 300px;
-			overflow: hidden;
+    .images>img {}
 
-		}
-	</style>
+    .window {
+        width: 300px;
+        overflow: hidden;
+    }
+    .red{
+    	color:red;
+    }
+    </style>
 </head>
+
 <body>
-	<div class="window">
-		<div id="images" class="images">
-			<img src="1.jpg" alt="" width=300>
-			<img src="2.jpg" alt="" width=300>
-			<img src="3.jpg" alt="" width=300>
-		</div>
-	</div>
-	<span id="buttons">
-		<span id="p1">第1张</span>
-		<span id="p2">第2张</span>
-		<span id="p3">第3张</span>
-	</span>
+    <div class="window">
+        <div id="images" class="images">
+            <img src="1.jpg" alt="" width=300>
+            <img src="2.jpg" alt="" width=300>
+            <img src="3.jpg" alt="" width=300>
+        </div>
+    	<span id="buttons">
+			<span id="p1">第1张</span>
+    		<span id="p2">第2张</span>
+    		<span id="p3">第3张</span>
+    	</span>
+    </div>
+
 </body>
 <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
 <script>
-	// $(p1).on('click',function(){
-	// 	$(images).css({
-	// 		transform:'translateX(0)'
-	// 	})
-	// })
-	// $(p2).on('click',function(){
-	// 	$(images).css({
-	// 		transform:'translateX(-300px)'
-	// 	})
-	// })
-	// $(p3).on('click',function(){
-	// 	$(images).css({
-	// 		transform:'translateX(-600px)'
-	// 	})
-	// })
-	var allButtons = $('#buttons>span')		
-	for(let i = 0;i<allButtons.length;i++){
+	var allButtons = $('#buttons > span')
+	var n = 0;
+	var size = allButtons.length
+
+	var timerId = setTimer()
+	function activeButton($button){
+		$button.addClass('red')
+		.siblings('.red').removeClass('red')
+	}
+	function setTimer(){
+		return setInterval(()=>{
+			n++;
+			allButtons.eq(n%size).trigger('click')
+		},1000)
+	}
+
+	for(let i =0;i<allButtons.length;i++){
 		$(allButtons[i]).on('click',function(x){
-			var index = $(x.currentTarget).index();
-			var n =index * -300
-			console.log(n);
+			var index = $(x.currentTarget).index()
+			var p = index * -300;
 			$('#images').css({
-				transform:'translate('+n+'px)'
+				transform:'translate('+p+'px)'
 			})
+			n  = index
+			activeButton(allButtons.eq(n))
 		})
-		}
+	}
+	allButtons.eq(n%size).trigger('click')
+
+	$('.window').on('mouseenter',function(){
+		window.clearInterval(timerId)
+	})
+	$('.window').on('mouseleave',function(){
+		timerId = setTimer()
+	})
 
 </script>
+
 </html>
