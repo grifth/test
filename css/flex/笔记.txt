@@ -10,3 +10,25 @@ flex 来了
 1.块级布局车种垂直方向 行内布局侧重水平方向 flex布局与方向无光
 2.flex布局可以实现空间制动分配 制动对齐 
 3.flex适用于简单的线性布局 更复杂的用grid布局
+
+flex container 属性
+flex-direcion方向 row column reverse 
+flex-wrap 	 换行
+flex-flow 	 上面两个简写
+justify-content 主轴方向对齐方式
+align-items 侧轴对齐方式
+align-content 多行/列内容对齐方式（较少使用）
+
+flex item 属性
+flex-grow 增加比例 （空间过多时）
+flex-shrink 收缩比例（空间不够用时）
+flex-basis 默认大写  （一般不用）
+flex 上面三个的缩写
+order 顺序（代替双飞翼）
+align-self 自身对齐方式
+
+flex布局
+手机页面布局 （topbar+main +tabs)
+产品列表
+PC页面布局
+完美居中

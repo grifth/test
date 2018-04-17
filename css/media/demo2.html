@@ -35,7 +35,15 @@
    	// Node.prototype.addClass=function addClass(classes){
    	// 	classes.forEach((value)=>this.classList.add(value))
    	// }
-   	window.Node2 = function(node){
+   	window.Node2 = function(nodeOrSelector){
+   		let node;
+   		if(typeof nodeOrSelector ==='string'){
+   			node = document.querySelector(nodeOrSelector)
+   			console.log(node);
+   		}else{
+   			node = nodeOrSelector
+   			console.log(node);
+   		}
    		return{
    			getSiblings:function(){
    				var allChildren = node.parentNode.children;
@@ -50,7 +58,7 @@
    			},
    			addClass:function(classes){
    				classes.forEach((value)=>node.classList.add(value))
-   			}
+   			},
    		}
    	}
    	var node2 = Node2(item3)
