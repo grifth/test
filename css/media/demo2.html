@@ -18,47 +18,44 @@
         <li id="item5"></li>
     </ul>
     <script>
-    Node.prototype.getSiblings=function getSiblings() {
-        var allChildren = this.parentNode.children;
-        var array = {
-            length: 0
-        }
-        for (let i = 0; i < allChildren.length; i++) {
-            if (allChildren[i] !== this) {
-                array[array.length] = allChildren[i];
-                array.length++;
-            }
-        }
-        return array;
-    }
+    // Node.prototype.getSiblings=function getSiblings() {
+    //     var allChildren = this.parentNode.children;
+    //     var array = {
+    //         length: 0
+    //     }
+    //     for (let i = 0; i < allChildren.length; i++) {
+    //         if (allChildren[i] !== this) {
+    //             array[array.length] = allChildren[i];
+    //             array.length++;
+    //         }
+    //     }
+    //     return array;
+    // }
 
-   	Node.prototype.addClass=function addClass(classes){
-   		classes.forEach((value)=>this.classList.add(value))
+   	// Node.prototype.addClass=function addClass(classes){
+   	// 	classes.forEach((value)=>this.classList.add(value))
+   	// }
+   	window.Node2 = function(node){
+   		return{
+   			getSiblings:function(){
+   				var allChildren = node.parentNode.children;
+   				var array = {length:0}
+   				for(let i = 0;i<allChildren.length;i++){
+   					if(allChildren[i]!==node){
+   						array[array.length] = allChildren[i];
+   						array.length +=1;
+   					}
+   				}
+   				return array;
+   			},
+   			addClass:function(classes){
+   				classes.forEach((value)=>node.classList.add(value))
+   			}
+   		}
    	}
-   	item3.addClass(['a','b']);
-   	console.log(item4.getSiblings());
-    var array = {
-        length: 0
-    }
-    var aa = { 'a': true, 'b': false, 'c': true }
-    // addClass(item4,classes);
-    // for(let i = 0;i < allChildren.length;i++){
-    // 	if(allChildren[i]!==item3){
-    // 		array[array.length] = allChildren[i]
-    // 		array.length ++;
-    // 		console.log(array.length);
-    // 	}else{
-    // 		console.log(allChildren[i]);
-    // 	}
-    // }
-    // for(let key in classes){
-    // 	var value = classes[key]
-    // 	if(value){
-    // 		item3.classList.add(key)
-    // 	}else{
-    // 		item3.classList.remove(key)
-    // 	}
-    // }
+   	var node2 = Node2(item3)
+   	console.log(node2.getSiblings());
+   	node2.addClass(['a','b'])
     </script>
 </body>
 
