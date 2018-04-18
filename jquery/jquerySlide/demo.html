@@ -3,69 +3,17 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<style>
-		.images{
-			display: -webkit-flex;
-			display: -moz-flex;
-			display: -ms-flex;
-			display: -o-flex;
-			display: flex;
-			align-items: flex-start;
-			transition: transform 1s;
-		}
-		.images>img{
-			
-		}
-
-		.window{
-			width: 300px;
-			overflow: hidden;
-
-		}
-	</style>
 </head>
 <body>
-	<div class="window">
-		<div id="images" class="images">
-			<img src="1.jpg" alt="" width=300>
-			<img src="2.jpg" alt="" width=300>
-			<img src="3.jpg" alt="" width=300>
-		</div>
+	<div id="x">
+		
 	</div>
-	<span id="button">
-		<button id="p1">第1张</button>
-		<button id="p2">第2张</button>
-		<button id="p3">第3张</button>
-	</span>
 </body>
-<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script>
-	// $(p1).on('click',function(){
-	// 	$(images).css({
-	// 		transform:'translateX(0)'
-	// 	})
-	// })
-	// $(p2).on('click',function(){
-	// 	$(images).css({
-	// 		transform:'translateX(-300px)'
-	// 	})
-	// })
-	// $(p3).on('click',function(){
-	// 	$(images).css({
-	// 		transform:'translateX(-600px)'
-	// 	})
-	// })
-	var allButtons = $('#buttons>span')		
-	for(let i = 0;i<allButtons.length;i++){
-		$(allButtons[i]).on('click',function(x){
-			var index = $(x.currentTarget).index();
-			var n =index * -300
-			console.log(n);
-			$('#images').css({
-				transform:'translate('+n+'px)'
-			})
-		})
-		}
+	var div = document.getElementById('x')
+	var $div = $('#x')
+	alert(div)
 
 </script>
 </html>
