@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="./node_modules/jquery/dist/jquery.js"></script>
+	<style>
+		*{padding: 0;margin: 0;}
+		*{box-sizing: border-box;}
+		.window{
+			width: 400px;height: 300px;
+			margin: 20px auto;
+		}
+		.images{
+			position: relative;
+		}
+		.images >img{
+			width: 100%;
+		}
+		.images >img:nth-child(1){
+			position: absolute;
+			top:0;
+			left: 0;
+		}
+		.images >img:nth-child(2){
+			position: absolute;
+			top:0;
+			left: 100%;
+		}		
+	</style>
+</head>
+<body>
+	<div class="window">
+		<div class="images">
+			<img src="./1.jpg" alt="" width="400" heigth="300">
+			<img src="./2.jpg" alt="" width="400" heigth="300">
+			<img src="./3.jpg" alt="" width="400" heigth="300">
+		</div>
+	</div>
+</body>
+<script>
+</script>
+</html>
