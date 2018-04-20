@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		function print(){
+			console.log(hi);
+		}
+	</script>
+</head>
+<body>
+	<!-- 这里面onclick="function()"-->
+	<buton id="1" onclick="print">1</buton><!-- 调用函数要在后面加（）-->
+	<buton id="2" onclick="print()">2</buton>
+	<buton id="3" onclick="print.call()">3</buton>
+</body>
+<script>
+//obj.onclick = function   function后面不用加括号
+1.onclick = print//print 类型为函数对象
+2.onclick = print() //undefined
+3.onclick = print.call()//underfined
+</script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="window">
+		<div class="images">
+			<img src="" alt="">
+			<img src="" alt="">
+			<img src="" alt="">
+		</div>
+		<span id="buttons">
+			<span>第1张</span>
+			<span>第3张</span>
+			<span id="s">第2张</span>
+		</span>
+	</div>
+</body>
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script>
+	//如果children[i]=== <span id="s"></span> 那么说明   i = n
+	//jquery对象的index()方法  可以jquery对象在父节点的子节点是第几个节点 并返回
+
+var allButtons = $('#buttns>span')
+var n;
+var children = s.parentNode.children;
+for(var i =0;i<children.length;i++){
+	if(children[i]===s){
+		n=i;
+		break;
+	}
+}
+(function(){
+	var lives  =50;
+	window.x = function(){
+		lives +=1;
+		console.log(lives);
+	}
+	window.y = function(){
+		lives -=1;
+	}
+})()
+window.x
+</script>
+</html>

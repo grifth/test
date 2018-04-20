@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#parent{
+		width: 400px;
+		height: 400px;
+		background: white;
+	}
+	#grand{
+		width: 600px;
+		height: 600px;
+		background: gray;
+	}
+	#child{
+		width: 200px;
+		height: 200px;
+		background: red;
+	}
+	</style>
+</head>
+<body>
+	<button id='xxx'>xx</button>
+	<div id="grand">
+		爷爷
+		<div id="parent">爸爸
+			<div id="child">儿子
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+	//addEventListener 是个队列 可以重复使用 先进先出
+	//xxx拥有一个队列eventListeners
+	xxx.addEventListener('click',function(){
+		console.log(1);
+	})
+	//onclick是元素唯一的一个属性 重复会覆盖
+	// xxx.onclick = function(){
+	// 	console.log(2);
+	// }
+	// xxx.onclick = function(){
+	// 	console.log(3);
+	// }
+
+	//1.当我点击了儿子的时候 我是否点击了父亲和爷爷  yes
+	//2.当我点击儿子的时候 三个函数是否调用
+	// false : undefined null 0 '' NAN
+	//addEventListenner('click',function(){},false) 和 addEventListenner('click',function(){})结果一样
+	//不传第三个参数/传false 儿子 爸爸 爷爷
+	//传 true  爷爷 爸爸 儿子
+	//3. 结果 123 or 321
+	grand.addEventListener('click',function(){
+		console.log('爷爷1');
+	})
+	parent.addEventListener('click',function(){
+		console.log('爸爸2');
+	})
+	child.addEventListener('click',function(){
+		console.log('儿子3');
+	})
+	//同一个元素 按先后顺序 不管第三个参数怎么样 结果都是按先后顺序的
+	child.addEventListener('click',function(){
+		console.log(1);
+	})
+	child.addEventListener('click',function(){
+		console.log(2);
+	})
+</script>
+</html>
