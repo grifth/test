@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="./node_modules/jquery/dist/jquery.js"></script>
+	<style>
+		.window{
+			width: 600px;
+			height: 400px;
+			position: relative;
+			overflow: hidden;
+			margin: 100px auto;
+
+		}
+		.images{
+			width: 600px;
+			height: 400px;
+		}
+		img{
+			width: 600px;
+			height: 400px;
+			display: none;
+		}
+		img:nth-child(1){
+			display: block;
+		}
+		.right{
+    		position: absolute;
+    		width: 30px;
+    		height: 60px;
+    		top: 50%;
+    		margin-top: -30px;
+    		background-color: rgba(0,0,0,.6);
+    		color: #fff;
+    		font-size: 30px;
+    		line-height: 60px;
+    		text-align: center;
+    		right: 10px;
+		}
+		.left{
+    		position: absolute;
+    		width: 30px;
+    		height: 60px;
+    		top: 50%;
+    		margin-top: -30px;
+    		background-color: rgba(0,0,0,.6);
+    		color: #fff;
+    		font-size: 30px;
+    		line-height: 60px;
+    		text-align: center;
+    		left: 10px;		
+		}		
+	</style>
+</head>
+<body>
+	<div class="window">
+		<div class="images">
+			<img src="./1.jpg" alt="" >
+			<img src="./2.jpg" alt="" >
+			<img src="./3.jpg" alt="" >
+		</div>
+		<div class="right">&gt</div>
+		<div class="left">&lt</div>
+	</div>
+</body>
+<script>
+	var idx = 0;
+	var right = $('.right');
+	var left = $('.left')
+	var imgList = $('img');
+	var amount = imgList.length;
+	right.click(rightFun);
+	left.click(leftFun);
+	function rightFun(){
+		if(imgList.is(":animated")){
+			return;
+		}
+		idx++;
+		if(idx>amount-1){
+			idx=0;
+		}
+		imgList.eq(idx).css("display","block")
+				.siblings().css("display","none")
+	}
+	function leftFun(){
+		if(imgList.is(":animated")){
+			return;
+		}
+		idx--;
+		if(idx<0){
+			idx=2;
+		}
+		imgList.eq(idx).css("display","block")
+				.siblings().css("display","none")
+	}	
+
+</script>
+</html>
