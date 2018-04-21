@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<style>
+		*{margin: 0;padding: 0;}
+		a{text-decoration: none;}
+		.window{
+			width: 600px;
+			height: 400px;
+			position: relative;
+			overflow: hidden;
+			margin: 100px auto;
+		}
+		.images{
+			width: 2400px;
+			height: 400px;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+		img{
+			float:left;
+			width: 600px;
+			height: 400px;
+		}
+		.btn>a{
+			position: absolute;
+			width: 30px;
+			line-height: 60px;
+			top: 50%;
+			margin-top: -30px;
+			background-color: rgba(0,0,0,.6);
+			color:#fff;
+			font-size:30px;
+			text-align: center;			
+		}
+		.rightbtn{
+			right: 10px;
+		}
+		.leftbtn{
+			left: 10px;
+		}		
+	</style>
+</head>
+<body>
+	<div class="window">
+		<div class="images">
+			<img src="1.jpg" alt="">
+			<img src="2.jpg" alt="">
+			<img src="3.jpg" alt="">
+		</div>
+		<div class="btn">
+			<a href="javascript:void(0)" class="leftbtn">&lt;</a><a href="javascript:void(0)" class="rightbtn">&gt;</a>
+		</div>
+	</div>
+</body>
+<script>
+	var images = $('.images');
+	var $window = $('.window');
+	var img = $('img');
+	var leftbtn = $('.leftbtn');
+	var rightbtn = $('.rightbtn');
+	var amount = img.length;
+	var idx = 0;
+	var timer = setInterval(rightFun,2000);
+	$window.mouseenter(function(){
+		clearInterval(timer);
+	})
+	$window.mouseleave(function(){
+		timer = setInterval(rightbtn,2000)
+	})
+	images.children("img:first").clone().appendTo(images)
+	rightbtn.click(rightFun);
+		function rightFun(){
+			if(images.is(":animated")){
+				return;
+			}
+			idx ++;
+			if(idx > amount - 1){
+					idx = 0;
+					images.css("left",0);
+				}	
+			images.animate({"left": -600 * idx },400);
+		}
+		leftbtn.click(leftFun)
+		function leftFun(){
+			if(images.is(":animated")){
+				return;
+			}
+			idx--;
+			if(idx<0){
+				idx = amount -1;
+				images.css("left",-600*amount)
+			}
+			images.animate({"left":-600*idx},400);
+		}	
+</script>
+</html>
