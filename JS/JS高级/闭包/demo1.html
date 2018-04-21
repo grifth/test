@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+	//局部变量,函数使用完毕,变量也就释放了
+ //闭包的作用缓存数据:只要是想把数据保存起来,就把这个数据放在闭包中(就是在外层函数和里层函数的中间)
+ function f1(){
+ 	var num = 10;
+ 	return function(){
+ 		return num++;
+ 	}
+ }
+ var ff = f1();
+console.log(ff());//10
+console.log(ff());//11
+</script>
+</html>
