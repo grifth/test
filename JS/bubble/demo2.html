@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    div {
+        border: 1px solid black;
+    }
+
+    #parent1 {
+        width: 200px;
+        height: 200px;
+    }
+
+    #parent2 {
+        width: 150px;
+        height: 150px;
+    }
+
+    #parent3 {
+        width: 100px;
+        height: 100px;
+    }
+
+    #parent4 {
+        width: 50px;
+        height: 50px;
+    }
+    </style>
+</head>
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+<body>
+    <div id="parent1">1
+        <div id="parent2">2
+            <div id="parent3">3
+                <div id="parent4">4</div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+$("#parent3").on("click", function() {
+    console.log("3")
+
+    setTimeout(function() {
+        $("#parent2").on("click", function() {
+            console.log("2")
+        })
+    }, 0)
+
+    setTimeout(function() {
+        $("#parent4").on("click", function() {
+            console.log("4")
+        })
+    }, 0)
+
+})
+/*当你给 DOM 节点的事件处理函数内添加了一个事件监听A, 那么事件监听A是马上添加到 DOM 中(也就是说刚添加的事件监听A在第一次点击就能激活, 看第一个例子)
+如果你想让添加的事件监听A不是马上添加到 DOM 中(也就是说刚添加的事件监听A在第二次点击才能激活)那么可以使用setTimeout解决. (看第二个例子)*/
+</script>
+
+</html>
