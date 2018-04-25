@@ -116,6 +116,7 @@
 	</div>
 </body>
 <script>
+	var $gallery = $('.gallery')
 	var $imgList = $('.images');
 	var idx = 0;
 	var $button = $(".circles ol li");
@@ -142,5 +143,14 @@ function autoPlayer(){
 var timer = setInterval(function(){
 	autoPlayer()
 },5000)
+$gallery.mouseenter(function(){
+	clearInterval(timer);
+})
+$gallery.mouseleave(function(){
+	clearInterval(timer);
+	timer = setInterval(function(){
+		autoPlayer();
+	},5000)
+})
 </script>
 </html>
