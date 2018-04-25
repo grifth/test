@@ -3,42 +3,144 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<script src="./node_modules/jquery/dist/jquery.js"></script>
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<style>
-		*{padding: 0;margin: 0;}
-		*{box-sizing: border-box;}
+		*{margin: 0;padding: 0;}
+		a{text-decoration: none;}
+		body{
+			color:#444444;
+			font-size:13px;
+			background: #f2f2f2;
+			font-family:Arial, Helvetica, sans-serif;
+			}
+		ol,li{
+			list-style: none;
+		}
+		.gallery{
+			height: 445px;
+			width: 600px;
+			margin: 100px auto;
+			box-shadow:0 0 3px #AAAAAA;
+			border:1px solid white;
+			border-bottom-left-radius:4px;
+			background: url(./img/panel.jpg) repeat-x bottom center #ffffff;
+		}
 		.window{
-			width: 400px;height: 300px;
-			margin: 20px auto;
+			width: 600px;
+			height: 400px;
+			position: relative;
+			overflow: hidden;
+			margin-bottom: 0;
+			
 		}
 		.images{
-			position: relative;
-		}
-		.images >img{
-			width: 100%;
-		}
-		.images >img:nth-child(1){
+			width: 4400px;
+			height: 400px;
 			position: absolute;
-			top:0;
 			left: 0;
+			top: 0;
 		}
-		.images >img:nth-child(1){
-			position: absolute;
-			top:0;
-			left: 0;
-		}		
+		.window .images img{
+			float:left;
+			width: 600px;
+			height: 400px;
+		}
+		.circles{
+			width: 600px;
+			line-height: 45px;
+			display: flex;
+			justify-content: center;
+			margin: 0 auto;
+		}	
+		.circles ol{
+			display: flex;
+		}
+		.circles ol li{
+			width: 60px;
+    		display: inline-block;
+    		list-style: none;
+    		height: 45px;
+    		text-align: center; 
+    		cursor: pointer; 
+    		overflow: hidden;  		
+		}
+		.circles ol li.active{
+			background: url(./img/active_bg.png) no-repeat;
+			overflow: hidden;
+			cursor: default;
+		}
+		.circles ol li.inact:hover {
+    		background: url(./img/pic_bg.png) repeat;
+		}
+		.circles ol>span{
+			 background: url(./img/divider.png) no-repeat right;
+			 width: 2px;
+    		display: inline-block;
+    		list-style: none;
+    		height: 45px;
+    		text-align: center; 			 
+		}
+		.circles ol li a{
+			color: #0196e3;
+    		text-decoration: none;
+    		outline: none;
+    		display: block;
+    		background: url(./img/divider.png) no-repeat right;
+    		height: 35px;
+    		padding-top: 10px;    		
+		}
+		.circles ol li a img{
+			border: none;			
+		}
 	</style>
 </head>
 <body>
+	<div class="gallery">
 	<div class="window">
 		<div class="images">
-			<img src="./1.jpg" alt="" width="400" heigth="300">
-			<img src="./2.jpg" alt="" width="400" heigth="300">
-			<img src="./3.jpg" alt="" width="400" heigth="300">
+			<img src="1.jpg" alt="">
+			<img src="2.jpg" alt="">
+			<img src="3.jpg" alt="">
+			<img src="4.jpg" alt="">
 		</div>
+	</div>
+	<div class="circles">
+			<ol>
+				<span>&nbsp;</span>
+				<li class="active"><a><img src="./img/sample_slides/thumb_macbook.png"" alt=""></a></li>
+				<li class="inact"><a><img src="./img/sample_slides/thumb_iphone.png" alt=""></a></li>
+				<li class="inact"><a><img src="./img/sample_slides/thumb_imac.png" alt=""></a></li>
+				<li class="inact"><a><img src="./img/sample_slides/thumb_about.png" alt=""></a></li>
+			</ol>
+	</div>
 	</div>
 </body>
 <script>
-	
+	var $imgList = $('.images');
+	var idx = 0;
+	var $button = $(".circles ol li");
+	$imgList.children("li:first").clone().appendTo($imgList);
+
+	// 		function(){
+	// 	idx = $(this).index();
+	// 	
+	// }
+$button.click(function(){
+ 		idx = $(this).index()-1;
+ 		$imgList.stop(true).animate({"left":-600 * idx},400);
+ 		$(this).removeClass('inact').addClass('active').siblings().removeClass('active');
+ })
+
+function autoPlayer(){
+	idx++;
+	if(idx>3){
+		idx=0
+	}
+	$imgList.stop(true).animate({"left":-600 * idx},400);
+	$button.eq(idx).removeClass('inact').addClass('active').siblings().removeClass('active');
+}
+var timer = setInterval(function(){
+	autoPlayer()
+},5000)
 </script>
 </html>
