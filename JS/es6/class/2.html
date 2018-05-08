@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+	class Animal{
+		constructor(){
+			this.body = '身体'
+			this._race = '动物'
+		}
+		get race(){
+			return this._race
+		}
+		set race(value){
+			this._race = value
+		}
+	}
+	class Person extends Animal{
+		constructor(name){
+			super()
+			this._name = name
+			this._age = 18
+			this.body = this.body + '手脚'
+		}
+		get age(){
+			return this.age
+		}
+		get name(){
+			return this._name
+		}
+		set name(v){
+			if(v.length>4||v.length<2){
+				console.log('go hell ');
+			}
+			else{
+				this._name = v
+			}
+		}
+	}
+	var a = new Person(1);
+</script>	
+</body>
+</html>

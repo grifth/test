@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 迭代器 -->
+    <script>
+    var version = 1
+    // function 发布(){
+    // 	version+=1
+    // 	return version
+    // }
+
+    function 发布() {
+        var _value = 0
+        var max = 10 
+        return {
+            next: function() {
+                _value += 1
+                if(_value>max){ throw new Error ('没有辣')
+                }
+                if(_value===max){
+                	return{value:_value,done:true}
+                }else{
+                	return {
+                    value: _value,
+                    done:false
+                }
+                }s
+            }
+        }
+    }
+    a = 发布()
+    </script>
+</body>
+
+</html>

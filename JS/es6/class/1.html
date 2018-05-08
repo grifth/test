@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+ class Hunman{
+ 	constructor(body,age){
+ 		this.body = body
+ 		this.age = age
+ 	}
+ 	breath(){
+ 		console.log(1);
+ 	}
+ }
+
+
+//Students类  Hunman 是基类
+ class Students extends Hunman{
+ 	constructor(body,age,grade){
+ 		super(body,age)//super执行你继承的那个类的constructor
+ 		this.grade = grade
+ 	}
+ }
+
+</script>
+</html>
