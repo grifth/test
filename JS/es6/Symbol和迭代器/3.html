@@ -1,1 +1,36 @@
-3.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<!-- 可迭代对象 数组	  对象不能迭代
+	迭代 for (let item of iterableObject) 放回 值  
+	for(let i=0;i<10;i++)
+	for(let key in object) 返回 下标
+	对象能改成 迭代的
+
+-->
+</body>
+<script>
+	// 如果 a[Symbol iterator] 没有报错 那么就可以迭代
+	var object ={0:1,1:2,2:3}
+	var array = [2,3,4]
+	object[Symbol.iterator] = function *(){
+		let keys = Object.keys(object)
+		for(let i=0;i<keys.length;i++){
+			yield object[keys[i]]
+		}
+	}
+
+	function* 发布器(){
+		var version  =  0
+		while(true){
+			version +=1
+			yield version 
+		}
+	}
+</script>
+</html>
