@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<!-- 写一个函数
+fn()打印出'a'	
+fn()()打印出'b'
+fn()()()打印出'c'
+ --></body>
+ <script>
+ 	function fn(){
+ 		let result = 'a'
+ 		setTimeout(()=>{
+ 			console.log(result);
+ 		})
+ 		return function(){
+ 			result='b'
+ 			return function(){
+ 				result = 'c'
+ 			}
+ 		}
+ 	}
+
+ </script>
+</html>
