@@ -1,0 +1,29 @@
+{
+  "name": "webpack-study",
+  "version": "1.0.0",
+  "description": "webpack的学习和使用",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jsmond2016/webpack-study.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jsmond2016/webpack-study/issues"
+  },
+  "homepage": "https://github.com/Jsmond2016/webpack-study#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "node-sass": "^4.7.2",
+    "postcss-loader": "^2.1.0",
+    "sass-loader": "^6.0.6",
+    "webpack": "^3.11.0"
+  }
+}
