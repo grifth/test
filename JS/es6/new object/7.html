@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+//关键字 如果是关键字 那么就无法声明
+//undefined 可以声明 所以undefined 不是关键字  但是null不能声明  同样表示空 为什么一个是关键字 一个不是 原因是JS的设计问题
+
+var undefined = 1;
+//声明undefined 并给undefined赋值 undefined打印出的值 依旧是undefined 而不是1 
+//那么undefined是声明。。。。。。undefined 是一个只读的变量
+'undefined' in window//结果为true 
+'null' in window //结果为false 
+// undefined 是window的一个只读属性 不能赋值 如果赋值 也不会报错
+
+
+// var o ={
+// 	name:frank
+// }
+//如果我们声明一个对象 想给这个对象添加只读属性
+var o = {
+	get name(){return 'frank'}
+}
+o.name//放回frank
+o.name = 'jack'
+o.name//还是frank
+
+//es6 的Object.defineProperty也可以完成
+Object.defineProperty(o,'name1',{writable:false})
+o.name1// undefined
+o.name1=4
+o.name1//还是undefined
+// 如果想给不可写的属性有一个初始值
+Object.defineProperty(o,'name2',{writable:false,value:10})
+o.name2//10
+
+//现在name的configurable的值默认是true  所以是可以配置name2 是否可读写 
+Object.defineProperty(o,'name3',{writable:false,value:100,configurable:false})
+o.name3 //100
+o.name3 = 1111
+o.name3 //100
+Object.defineProperty(o,'name3',{writable:true})//Uncaught TypeError: Cannot redefine property: name3 无法修改
+</script>	
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+    var o = {
+        _age: 19,
+        get age() { return o._age },
+        set age(value) {
+            if (value < 100) {
+                o._age = value
+            } else {
+                o._age = 100
+            }
+        }
+    }
+    var i = 0
+    Object.defineProperty(window, 'a', {
+        get() {
+            i += 1
+            return i
+        },
+    })//a ===1 && a ===2 && a ===3 打印true
+
+    </script>
+</body>
+
+</html>

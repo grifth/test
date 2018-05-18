@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+	var obj1 = {a:1,b:2,c:3}
+	// var obj2 = obj1
+	// obj2.a = 4
+	// 修改obj2.a的值会影响obj1.a的值
+	// obj1.a 打印结果为4
+
+	//浅拷贝 obj2.a=4就不会影响obj1.a的值
+	// var obj2 = {}
+	// for(let key in obj1){
+	// 	obj2[key] = obj1[key]
+	// }
+
+	//Object.assign() ES6
+	var obj2 = Object.assign({},obj1)//会把obj1的 key value复制到第一个对象中 
+
+	var obj3 = {...obj1}//es6
+
+	var aa = 1
+	var bb = 2 
+	var obj4 = {...obj1,...obj2,...obj3,aa,bb,get x(){return 'hi'}}
+</script>	
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+<script>
+//ES5创建对象 new Obhect() 和 {}
+
+var a  = new Object()//es5
+//a 虽然是个空对象 但是还是有个属性 __proto__:object	
+var b = Object.create(null)//es6
+//b 也是空对象 连__proto__:object都没有
+var c = Object.create(Object.prototype)
+//es6 产生一个和 es5一样的空对象
+
+</script>	
+</body>
+</html>

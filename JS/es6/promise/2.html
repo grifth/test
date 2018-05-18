@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+function 获取用户信息(name){
+	return new Promise(function(resolve,reject){
+		if(name==='A'){
+			console.log('我知道A');
+			resolve(['A','是骗子'])
+		}else{
+			console.log('不认识');
+			reject('不认识')
+		}
+	})
+}			
+
+function 获取用户好友信息(name){
+	return new Promise(function(resolve,reject){
+		if(name ==='A'){
+			resolve('张三,李四,王五')
+		}else{
+			reject('不认识')
+		}
+	})
+}
+
+function 打印信息(data){
+	return new Promise(function(resolve,reject){
+		console.log(data);
+		resolve(data[0])
+	})
+}
+
+function 打印失败理由(理由){
+		console.log('失败的理由是'+理由);
+		return Promise.reject('没搞定')
+}
+
+function 二次搞定(理由){
+	console.log('前面好像梅搞定,理由是'+理由);
+}
+获取用户信息('c')
+		.then(打印信息,打印失败理由)
+		.then(获取用户好友信息,二次搞定)
+		.then(打印信息,打印失败理由)
+
+</script>	
+</body>
+</html>

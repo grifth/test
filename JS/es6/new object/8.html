@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+var o ={a:1,b:2,c:3}
+for(let key in o){
+	console.log(key);
+}
+//打印的结过 a b c
+'toString' in o//true 
+//问题出现了 都是o上属性 为什么有的属性能被遍历到 有的不行
+
+//看一下数组的
+var a =[1,2,3]
+for(let key in a){
+	console.log(key);
+}
+//0 1 2
+a.length//3
+'length' in a//true 
+
+//引入 enumerable 
+Object.defineProperty(o,'b',{enumerable:false})
+for(let key in o){
+	console.log(key);
+}// a c 没有b
+Object.defineProperty(o,'length',{enumerable:true})
+for(let key in o){
+	console.log(key);
+}// a c length
+</script>	
+</body>
+</html>
