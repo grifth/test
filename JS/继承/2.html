@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+//prototype属性只有一个功能 存放共有属性对象的地址
+//new var obj = new Fn()
+// 1.产生一个空对象 
+// 2.this =这个空对象 
+// 3.this.__proto__==Fn.prototype 
+// 4.执行Fn.call(this,x,y,z) 
+// 5.return 第四步的结果
+
+//通过new 操作下划线prototype
+
+//阮一峰在博客中
+ class Human{
+     constructor(name){
+         this.name = name
+     }
+     run(){
+         console.log("我叫"+this.name+"，我在跑")
+         return undefined
+     }
+ }
+ class Man extends Human{
+     constructor(name){
+         super(name)
+         this.gender = '男'
+     }
+     fight(){
+         console.log('糊你熊脸')
+     }
+ }
+</script>	
+</body>
+</html>

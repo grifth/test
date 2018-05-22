@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	
+</body>
+<script>
+//继承 继承可以使得子类具有父类的各种属性方法
+function Human(name){
+	this.name = name
+}
+Human.prototype.run = function(){
+	console.log('我教'+this.name+"跑步");
+	return undefined
+}
+function Man (name){
+	Human.call(this,name)
+	this.gender = '男'
+}
+
+// Man.prototype.__proto__ = Human.prototype IE不支持  也不推荐__proto__
+
+var f = function(){}
+f.prototype = Human.prototype
+
+// var a = new f() 
+//a.__proto__===Human.prototype
+//Man.prototype =Human.prototype
+//这样继承就能避免执行Human函数中的语句
+
+Man.prototype = new f()
+// Man.prototype.fight = function(){
+// 	console.log('怼死你');
+// }
+</script>
+</html>

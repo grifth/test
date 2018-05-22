@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+	var mixin = function(a,b){
+		for(let key in b){
+			a[key] = b[key]
+		}
+	}
+
+
+	a = {"x":1,"y":2}
+	b = {}
+	Object.assign(b,a)
+</script>	
+</body>
+</html>

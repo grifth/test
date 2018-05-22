@@ -8,24 +8,28 @@
 	
 </body>
 <script>
- class Hunman{
+ class Human{
+ 	//constructor用来构造只有属性
  	constructor(body,age){
  		this.body = body
  		this.age = age
  	}
+ 	//共有属性写在constructor外面
  	breath(){
  		console.log(1);
  	}
  }
 
 
-//Students类  Hunman 是基类
- class Students extends Hunman{
+//Students类  Human 是基类
+ class Students extends Human{
  	constructor(body,age,grade){
  		super(body,age)//super执行你继承的那个类的constructor
  		this.grade = grade
  	}
  }
+
+
 
 </script>
 </html>
