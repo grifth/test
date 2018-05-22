@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+Array.prototype.mySort=function(){
+	for(var i=0;i<this.length-1;i++){
+		for(var j=0;j<this.length-1;j++){
+			console.log('第'+i+' '+this[j]+' '+this[j+1])
+			if(this[j]<this[j+1]){
+				var temp = this[j];
+				this[j]=this[j+1];
+				this[j+1]=temp
+			}
+		}
+	}
+}
+var arr = [4,2,1,3]
+arr.mySort()
+//乘法口诀表
+// for(var i =1;i<=9;i++){
+// 	for(var j=1;j<=9;j++){
+// 		console.log(i+"*"+j+"="+i*j)
+// 	}
+// }	
+</script>	
+</body>
+</html>

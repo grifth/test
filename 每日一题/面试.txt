@@ -13,3 +13,25 @@
     说说vue 的双向绑定是如何实现的
         父子组件是如何通信的
 
+   请说下jsonp是如何实现的
+
+ 赵若妃
+ 问题  简历为什么梅做成响应式 
+ 		导航栏下拉会变白是为什么 
+ 		对canvas的了解
+ 		canvas和svg的区别
+ 		什么时候使用svg
+ 		你觉得jquery是对是什么的封装
+ 		如果让你实现一个jquery的addclass的API你会怎么实现
+ 		你在实现addclass的时候 会把addclass放在哪个地方
+ 		所有jquery产生的对象的原型是什么
+ 		说下闭包
+ 		模块化  webpack
+
+蔡逍侠
+	 用的是什么前端工程化工具 		
+	 webpack loader是什么 干啥的
+	 less 和 sass 的语法 你了解吗
+	 都用sass的那些功能
+	 用原型写过class吗	 
+	 promise是干啥的
