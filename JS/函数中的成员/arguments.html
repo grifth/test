@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+// arguments是一个对应于传递给函数的参数的类数组对象。
+//arguments可以赋值
+
+function test(a){
+    console.log(a,Object.prototype.toString.call(arguments));
+    console.log(arguments[0],arguments[1]);
+    console.log(typeof arguments[0]);
+}
+test(1);
+
+</script>	
+</body>
+</html>
