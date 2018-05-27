@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="x"></button>
+</body>
+<script src="./ajax.js"></script>
+<script>
+x.addEventListener('click', (e) => {
+    let request = new XMLHttpRequest()
+    request.open('get', 'http://frank.com:8080/xxx')
+    request.send()
+    request.onreadystatechange = () => {
+        if (request.readyState === 4) {
+            console.log(request.status);
+            if (request.status >= 200 && request.status < 300) {
+                console.log(request.responseText);
+            } else if (request.status >= 400) {
+                console.log('失败');
+            }
+        }
+    }
+})
+</script>
+<script>
+    function a({url,method}){
+        console.log(url);
+        console.log(method);
+    }
+</script>
+
+</html>
