@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="app">
+  <p>{{ message }}</p>
+  <input type="text" v-model="message">
+
+<ol>
+  <!-- 创建一个 todo-item 组件的实例 -->
+    <todo-item
+      v-for="item in groceryList"
+      v-bind:todo="item"
+      v-bind:key="item.id">
+    </todo-item>
+</ol>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>	
+</body>
+<script src="component.js"></script>
+<script src="test.js"></script>
+</html>
