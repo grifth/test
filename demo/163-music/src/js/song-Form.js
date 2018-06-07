@@ -54,14 +54,9 @@
               song.set('singer',data.singer);
               song.set('url',data.url);
               // 设置优先级
-              song.save().then( (newSong)=>{
+             return song.save().then( (newSong)=>{
                 let { id , attributes} = newSong
-                Object.assign(this.data,{
-                    id:id,
-                    name:attributes.name,
-                    singer:attributes.singer,
-                    url:attributes.url
-                })
+                Object.assign(this.data,{id:id,...attributes,})
                 console.log(this.data);
               },  (error)=>{
                 console.error(error);
@@ -91,6 +86,9 @@
                     data[string]=this.view.$el.find(`input[name="${string}"]`).val()
                 })
                 this.model.create(data)
+                    .then(()=>{
+                      this.view.render(this.model.data)  
+                    })
             })
         }
 	}
