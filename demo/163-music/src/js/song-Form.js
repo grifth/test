@@ -38,6 +38,9 @@
                     html=html.replace(`__${string}__`,data[string]||'')
                 })
             	$(this.el).html(html)
+            },
+            reset(){
+                this.render({})
             }
 	}
 	let model = {
@@ -56,8 +59,8 @@
               // 设置优先级
              return song.save().then( (newSong)=>{
                 let { id , attributes} = newSong
-                Object.assign(this.data,{id:id,...attributes,})
-                console.log(this.data);
+               this.data = {id,...attributes}
+                // console.log(this.data);
               },  (error)=>{
                 console.error(error);
               });
@@ -87,7 +90,12 @@
                 })
                 this.model.create(data)
                     .then(()=>{
-                      this.view.render(this.model.data)  
+                        // console.log(this.model.data);
+                      // this.view.render(this.model.data)  
+                      this.view.reset()
+                      let string = JSON.stringify(this.model.data)
+                      let object = JSON.parse(string)
+                      window.eventHub.emit('create',object)
                     })
             })
         }
