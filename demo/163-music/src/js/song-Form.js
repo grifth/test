@@ -11,19 +11,19 @@
                     <label>
                       歌名
                     </label>
-                    <input name="name" type="text" value="__key__">
+                    <input name="name" type="text" value="__name__">
                 </div>
                 <div class="row">
                     <label>
                       歌手
                     </label>
-                    <input name="singer" type="text">
+                    <input name="singer" type="text" value="__singer__">
                 </div>
                 <div class="row">
                     <label>
                       外链
                     </label>
-                    <input name="url" type="text" value="__link__">
+                    <input name="url" type="text" value="__url__">
                 </div>
                 <div class="row">
                     <button type="submit">保存</button>
@@ -32,12 +32,15 @@
             `,
             //data={} 如果梅有传形参数 或者形参为undefined
             render( data={}){
-                let placeholders = ['key','link']
+                let placeholders = ['name','url','singer','id']
                 let html = this.template
                 placeholders.map((string)=>{
                     html=html.replace(`__${string}__`,data[string]||'')
                 })
             	$(this.el).html(html)
+            },
+            reset(){
+                this.render({})
             }
 	}
 	let model = {
@@ -57,7 +60,6 @@
              return song.save().then( (newSong)=>{
                 let { id , attributes} = newSong
                 Object.assign(this.data,{id:id,...attributes,})
-                console.log(this.data);
               },  (error)=>{
                 console.error(error);
               });
@@ -87,7 +89,8 @@
                 })
                 this.model.create(data)
                     .then(()=>{
-                      this.view.render(this.model.data)  
+                      this.view.reset(); 
+                      window.eventHub.emit('create',this.model.data)
                     })
             })
         }
