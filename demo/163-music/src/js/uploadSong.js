@@ -61,8 +61,7 @@
                 	link:sourceLink,
                 	key:response.key
                 });
-                window.app.newSong.active()
-                window.app.songForm.reset({
+                window.eventHub.emit('upload',{
                 	link:sourceLink,
                 	key:response.key
                 })
@@ -79,5 +78,4 @@
 		}
 	}
 	controller.init(view,model)
-	window.app.uploadSong = controller
 }
