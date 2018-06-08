@@ -3,10 +3,21 @@
 		el:'#songList-container',
 		template:`
                 <ul class="songList" >
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2aa3374d1a1468a4dc91377a0c877e22e59daecf
                 </ul> 
                 `,
         render(data){
+            let $el = $(this.el)
+            let {songs} = data
+            $el.html(this.template)
+            let liList =songs.map((song)=>$('<li></li>').text(song.name))
+            $el.find('ul').empty()
+            liList.map((domLi)=>{
+                $el.find('ul').append(domLi)
+            })
         	$(this.el).html(this.template)
             let {songs} = data
             let $el = $(this.el)
@@ -25,6 +36,7 @@
         }
 
 	}
+<<<<<<< HEAD
 
 	let model = {
         data:{
@@ -38,6 +50,12 @@
                 })
                 return songs
             })
+=======
+	let model = {
+        data:{songs:[
+            {id:1,name:'1'},{id:2,name:'2'}
+            ]
+>>>>>>> 2aa3374d1a1468a4dc91377a0c877e22e59daecf
         }
     }
 	let controller ={
@@ -72,10 +90,18 @@
                 this.view.clearActive()
             })
             window.eventHub.on('create',(songdata)=>{
+<<<<<<< HEAD
                 this.model.data.songs.push(songdata)
                 this.view.render(this.model.data)
             })            
         }
+=======
+                console.log(songdata)
+                this.model.data.push(songdata)
+                this.view.render(this.model.data)
+            })
+		}
+>>>>>>> 2aa3374d1a1468a4dc91377a0c877e22e59daecf
 	}
 	controller.init(view,model)
 }

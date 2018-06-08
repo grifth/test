@@ -17,7 +17,7 @@
                     <label>
                       歌手
                     </label>
-                    <input name="singer" type="text">
+                    <input name="singer" type="text" value="__singer__">
                 </div>
                 <div class="row">
                     <label>
@@ -32,7 +32,11 @@
             `,
             //data={} 如果梅有传形参数 或者形参为undefined
             render( data={}){
+<<<<<<< HEAD
                 let placeholders = ['name','url']
+=======
+                let placeholders = ['name','url','singer','id']
+>>>>>>> 2aa3374d1a1468a4dc91377a0c877e22e59daecf
                 let html = this.template
                 placeholders.map((string)=>{
                     html=html.replace(`__${string}__`,data[string]||'')
@@ -59,8 +63,12 @@
               // 设置优先级
              return song.save().then( (newSong)=>{
                 let { id , attributes} = newSong
+<<<<<<< HEAD
                this.data = {id,...attributes}
                 // console.log(this.data);
+=======
+                Object.assign(this.data,{id:id,...attributes,})
+>>>>>>> 2aa3374d1a1468a4dc91377a0c877e22e59daecf
               },  (error)=>{
                 console.error(error);
               });
@@ -95,12 +103,17 @@
                 })
                 this.model.create(data)
                     .then(()=>{
+<<<<<<< HEAD
                         // console.log(this.model.data);
                       // this.view.render(this.model.data)  
                       this.view.reset()
                       let string = JSON.stringify(this.model.data)
                       let object = JSON.parse(string)
                       window.eventHub.emit('create',object)
+=======
+                      this.view.reset(); 
+                      window.eventHub.emit('create',this.model.data)
+>>>>>>> 2aa3374d1a1468a4dc91377a0c877e22e59daecf
                     })
             })
         }
