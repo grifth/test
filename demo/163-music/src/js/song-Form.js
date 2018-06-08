@@ -11,7 +11,7 @@
                     <label>
                       歌名
                     </label>
-                    <input name="name" type="text" value="__key__">
+                    <input name="name" type="text" value="__name__">
                 </div>
                 <div class="row">
                     <label>
@@ -23,7 +23,7 @@
                     <label>
                       外链
                     </label>
-                    <input name="url" type="text" value="__link__">
+                    <input name="url" type="text" value="__url__">
                 </div>
                 <div class="row">
                     <button type="submit">保存</button>
@@ -32,7 +32,7 @@
             `,
             //data={} 如果梅有传形参数 或者形参为undefined
             render( data={}){
-                let placeholders = ['key','link']
+                let placeholders = ['name','url']
                 let html = this.template
                 placeholders.map((string)=>{
                     html=html.replace(`__${string}__`,data[string]||'')
@@ -71,10 +71,15 @@
 			this.view = view,
             this.view.init(),
 			this.model = model,
-			this.view.render(this.model.data),
+			this.view.render(),
             this.bindEvents(),
             window.eventHub.on('upload',(data)=>{
-                this.view.render(data)
+                this.model.data = data
+                this.view.render(this.model.data)
+            }),
+            window.eventHub.on('select',(data)=>{
+                this.model.data = data
+                this.view.render(this.model.data)
             })
 		},
         active(){

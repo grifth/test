@@ -62,8 +62,8 @@
                 	key:response.key
                 });
                 window.eventHub.emit('upload',{
-                	link:sourceLink,
-                	key:response.key
+                	url:sourceLink,
+                	name:response.key
                 })
                 // 获取上传成功后的文件的Url
             },
