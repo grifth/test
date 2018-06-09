@@ -11,19 +11,19 @@
                     <label>
                       歌名
                     </label>
-                    <input name="name" type="text" value="__key__">
+                    <input name="name" type="text" value="__name__">
                 </div>
                 <div class="row">
                     <label>
                       歌手
                     </label>
-                    <input name="singer" type="text">
+                    <input name="singer" type="text" value="__singer__">
                 </div>
                 <div class="row">
                     <label>
                       外链
                     </label>
-                    <input name="url" type="text" value="__link__">
+                    <input name="url" type="text" value="__url__">
                 </div>
                 <div class="row">
                     <button type="submit">保存</button>
@@ -32,7 +32,7 @@
             `,
             //data={} 如果梅有传形参数 或者形参为undefined
             render( data={}){
-                let placeholders = ['key','link']
+                let placeholders = ['name','url','id','singer']
                 let html = this.template
                 placeholders.map((string)=>{
                     html=html.replace(`__${string}__`,data[string]||'')
@@ -54,15 +54,9 @@
               song.set('singer',data.singer);
               song.set('url',data.url);
               // 设置优先级
-              song.save().then( (newSong)=>{
+              return song.save().then( (newSong)=>{
                 let { id , attributes} = newSong
-                Object.assign(this.data,{
-                    id:id,
-                    name:attributes.name,
-                    singer:attributes.singer,
-                    url:attributes.url
-                })
-                console.log(this.data);
+                Object.assign(this.data,{id,...attributes})
               },  (error)=>{
                 console.error(error);
               });
@@ -91,6 +85,11 @@
                     data[string]=this.view.$el.find(`input[name="${string}"]`).val()
                 })
                 this.model.create(data)
+                    .then(()=>{
+                      this.view.render({})
+                      let obj =  JSON.parse(JSON.stringify(this.model.data))
+                      window.eventHub.emit('creat',obj)
+                    })
             })
         }
 	}
