@@ -32,12 +32,23 @@
             `,
             //data={} 如果梅有传形参数 或者形参为undefined
             render( data={}){
+<<<<<<< HEAD
                 let placeholders = ['name','url','id','singer']
+=======
+<<<<<<< HEAD
+                let placeholders = ['name','url']
+=======
+                let placeholders = ['name','url','singer','id']
+>>>>>>> 2aa3374d1a1468a4dc91377a0c877e22e59daecf
+>>>>>>> f71bb9b5120e0a9931b5959c4ef2350e62441633
                 let html = this.template
                 placeholders.map((string)=>{
                     html=html.replace(`__${string}__`,data[string]||'')
                 })
             	$(this.el).html(html)
+            },
+            reset(){
+                this.render({})
             }
 	}
 	let model = {
@@ -54,9 +65,20 @@
               song.set('singer',data.singer);
               song.set('url',data.url);
               // 设置优先级
+<<<<<<< HEAD
               return song.save().then( (newSong)=>{
                 let { id , attributes} = newSong
                 Object.assign(this.data,{id,...attributes})
+=======
+             return song.save().then( (newSong)=>{
+                let { id , attributes} = newSong
+<<<<<<< HEAD
+               this.data = {id,...attributes}
+                // console.log(this.data);
+=======
+                Object.assign(this.data,{id:id,...attributes,})
+>>>>>>> 2aa3374d1a1468a4dc91377a0c877e22e59daecf
+>>>>>>> f71bb9b5120e0a9931b5959c4ef2350e62441633
               },  (error)=>{
                 console.error(error);
               });
@@ -67,10 +89,15 @@
 			this.view = view,
             this.view.init(),
 			this.model = model,
-			this.view.render(this.model.data),
+			this.view.render(),
             this.bindEvents(),
             window.eventHub.on('upload',(data)=>{
-                this.view.render(data)
+                this.model.data = data
+                this.view.render(this.model.data)
+            }),
+            window.eventHub.on('select',(data)=>{
+                this.model.data = data
+                this.view.render(this.model.data)
             })
 		},
         active(){
@@ -86,9 +113,23 @@
                 })
                 this.model.create(data)
                     .then(()=>{
+<<<<<<< HEAD
                       this.view.render({})
                       let obj =  JSON.parse(JSON.stringify(this.model.data))
                       window.eventHub.emit('creat',obj)
+=======
+<<<<<<< HEAD
+                        // console.log(this.model.data);
+                      // this.view.render(this.model.data)  
+                      this.view.reset()
+                      let string = JSON.stringify(this.model.data)
+                      let object = JSON.parse(string)
+                      window.eventHub.emit('create',object)
+=======
+                      this.view.reset(); 
+                      window.eventHub.emit('create',this.model.data)
+>>>>>>> 2aa3374d1a1468a4dc91377a0c877e22e59daecf
+>>>>>>> f71bb9b5120e0a9931b5959c4ef2350e62441633
                     })
             })
         }
