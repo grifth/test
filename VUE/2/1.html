@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 100vh;
+			height: 100vh;
+		}
+		.test{
+			width: 100px;
+			height: 100px;
+		}
+		.red{
+			background: #000;
+		}
+	</style>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>	
+<body>
+	<div id="app">
+		<div :class="{ red: isRed }" class="test"></div>
+		{{date | formatDate}}
+	</div>
+</body>
+<script>
+	var plusDate = function(value){
+		return value<10?'0'+value:value
+	}
+	var app = new  Vue({
+		el:'#app',
+		data:{
+			date:new Date(),
+			a:1
+		},
+		filters:{
+			formatDate:function(value){
+				var date = new Date(value)
+				var year = date.getFullYear()
+				var month = plusDate(date.getMonth()+1)
+				var day = plusDate(date.getDate())
+				var hours = plusDate(date.getHours())
+				var min = plusDate(date.getMinutes())
+				var sec = plusDate(date.getSeconds())
+				return year +'--'+month+'--'+day+'--'+hours+'--'+min+'--'+sec;
+			}
+		},
+		  created: function () {
+		    // `this` 指向 vm 实例
+		    console.log('a is: ' + this.a)
+		  },		
+		mounted:function(){
+			var _this = this
+			this.timer=setInterval(function(){
+				_this.date = new Date()
+			},1000)
+		},
+		beforeDestroy:function(){
+			if(this.timer){
+				clearInterval(this.timer);
+			}
+		}
+	})
+//console.log(app.$el) 
+// console.log(app.$data)
+</script>
+</html>

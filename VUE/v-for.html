@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>	
+<body>
+	<div id="app">
+		<ul>
+			<li v-for="food in foodList">{{food.name}}:{{food.price*food.discount?food.price*food.discount:food.price}}</li>
+		</ul>
+	</div>
+</body>
+<script>
+	var app = new Vue({
+		el:'#app',
+		data:{
+			// foodList:['12','11','13']
+			foodList:[
+			{
+				name:'葱',
+				price:10,
+				discount:.5
+			},
+			{
+				name:'姜',
+				price:11,
+				discount:.5
+			},
+			{
+				name:'蒜',
+				price:12,
+			}						
+			]
+		}
+	})
+</script>
+</html>

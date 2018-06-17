@@ -22,11 +22,14 @@ var sequelize = new Sequelize(undefined,undefined, undefined, {
 var Note = sequelize.define('note', {
   text: {
     type: Sequelize.STRING
+  },
+  uid:{
+  	type:Sequelize.STRING
   }
 
 });
 
-Note.sync();
+Note.sync(true);
 
 
 // Note.findAll({

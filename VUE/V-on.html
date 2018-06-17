@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.btn{
+			text-decoration: none;
+		}
+	</style>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>	
+<body>
+	<div id="app">
+		<button v-on="{mouseenter:onEnter,mouseleave:onOut}" @dbclick="onclick('yooo')">click</button>
+		<form @keyup="onkeyup" v-on:submit.prevent="onSubmit">
+			<input type="text">
+			<button type="submit">提交</button>
+		</form>
+	</div>
+</body>
+<script>
+	var app = new Vue({
+		el:'#app',
+		data:{
+			url:"http://baidu.com",
+			src:"https://img5.bcyimg.com/drawer/151942/post/c0jdh/dpcid80adxk4idnqdrm4vxbnve8bdtxc.jpg/w650",
+			klass:'btn',
+			isActive:true
+		},
+		methods:{
+			onclick(x){
+				alert(x);
+			},
+			onEnter(){
+				console.log('enter')
+			},
+			onOut(){
+				console.log('Out')
+			},
+			onSubmit(e){
+				console.log('on submit')
+			},
+			onkeyup(){
+				console.log('onkeyup')
+			}
+		}
+	})
+</script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.btn{
+			text-decoration: none;
+		}
+	</style>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>	
+<body>
+	<div id="app">
+		<!-- v-model.trim v-model.number lazy -->
+		<!-- <input type="text" v-model.number="price"> -->
+<!-- 		<label >
+			男
+		<input  v-model="sex"value="male" type="checkbox">
+		</label>
+		<label >
+			女
+		<input v-model="sex" value="female"  type="checkbox">
+		</label>	 -->	
+		<select v-model="from">
+			<option value="1">王家井</option>
+			<option value="2">断背山</option>
+		</select>
+		<pre>{{from}}</pre>
+	</div>
+</body>
+<script>
+	var app = new Vue({
+		el:'#app',
+		data:{
+			from:null,
+			name:'whh',
+			price:'10',
+			sex:[]
+		}
+	})
+</script>
+</html>

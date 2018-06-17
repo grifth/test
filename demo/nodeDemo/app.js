@@ -2,11 +2,16 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var session = require('express-session');
+var passport = require('passport');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/api');
 var api  = require('./routes/api')
+var auth  = require('./routes/auth')
 var usersRouter = require('./routes/api');
+
 
 var app = express();
 
@@ -15,15 +20,21 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
+app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(session({secret: 's3rrsdwadaw12312'}));
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use('/student',function(req,res,next){
 	res.send('hello yooo')
 })
 app.use('/', indexRouter);
+app.use('/auth',auth)
 app.use('/api', api);
 app.use('/users', usersRouter);
 

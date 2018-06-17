@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.btn{
+			text-decoration: none;
+		}
+	</style>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>	
+<body>
+	<div id="app">
+		<img :src="src" alt="">
+		<a :class="{btn:isActive}" :href="url">click</a>
+	</div>
+</body>
+<script>
+	var app = new Vue({
+		el:'#app',
+		data:{
+			url:"http://baidu.com",
+			src:"https://img5.bcyimg.com/drawer/151942/post/c0jdh/dpcid80adxk4idnqdrm4vxbnve8bdtxc.jpg/w650",
+			klass:'btn',
+			isActive:true
+		}
+	})
+</script>
+</html>
