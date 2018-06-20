@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组更新</title>
+	<style>
+	</style>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>	
+<body>
+	<div id="app">
+		<div v-for="study in arr">
+			{{study}}
+		</div>
+		<button @click="sortArr">点这个</button>
+		<button @click="reverseArr">点这个</button>
+	</div>
+</body>
+<script>
+	var app = new Vue({
+		el:'#app',
+		data:{
+			arr:['book','pen','yooo']
+		},
+		methods:{
+			sortArr:function(){
+				this.arr.sort(function(a,b){
+					return a.length-b.length
+				})
+			},
+			reverseArr:function(){
+				this.arr.reverse()
+			},
+			
+		}
+	})
+</script>
+</html>

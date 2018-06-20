@@ -3,30 +3,24 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<style>
-		.red{
-			color:red;
-		}
-	</style>
 </head>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>	
 <body>
 	<div id="app">
-		<p :class={red:isRed}>yoooo</p>
-		<button @click="turn">click</button>
+		<div v-if="role==='admin'||role==='superman'">
+			管理员你好
+		</div>
+		<div v-else-if="role==='hr'"></div>
+		<div v-else>
+			没有权限查看
+		</div>
 	</div>
 </body>
 <script>
 	var app = new  Vue({
 		el:'#app',
 		data:{
-			isRed:false,
-		},
-		methods:{
-			turn(){
-				this.isRed=!(this.isRed)
-				console.log(this.isRed);
-			}
+			role:'superman'
 		}
 	})
 </script>

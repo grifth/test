@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>条件渲染</title>
+	<style>
+
+	</style>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>	
+<body>
+	<div id="app">
+		<p v-if="6<3">{{apple}}</p>
+		<p v-else-if="9<5">{{pineapple}}</p>
+		<p v-else>{{banana}}</p>
+		<div  v-if="type==='name'">
+			用户名:<input type="text" placeholder="请输入">
+		</div>
+		<div v-else>
+			密码：<input type="password" placeholder="输入密码" key="sadas">
+		</div>
+		<button @click="toggleType">点我啊</button>
+		<p v-show="9>5">喔嚯嚯</p>
+		<ul>
+			<li v-for="(f,index) in fn">{{index}}---{{f.name}}</li>
+		</ul>
+		<ul>
+			<li v-for="(g,index) in girl">{{index}}----{{g}}</li>
+		</ul>
+	</div>
+</body>
+<script>
+	var app = new Vue({
+		el:'#app',
+		data:{
+			apple:'apple',
+			banana:'banana',
+			pineapple:"pineapple",
+			type:'name',
+			fn:[
+			{name:'thinking'},
+			{name:'pratice'},
+			{name:'listen'}
+			],
+			girl:{
+				1:'高圆圆',
+				2:'桥本环奈',
+				3:'amier'
+			}
+		},
+		methods:{
+			toggleType:function(){
+				this.type= (this.type==='name'?'password':'name')
+			}
+		}
+	})
+</script>
+</html>

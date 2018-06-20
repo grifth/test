@@ -2,31 +2,26 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>基本指令</title>
 	<style>
-		.red{
-			color:red;
+		[v-clock]:{
+			display: none;
 		}
 	</style>
 </head>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>	
 <body>
 	<div id="app">
-		<p :class={red:isRed}>yoooo</p>
-		<button @click="turn">click</button>
+		<p v-cloak>{{msg}}</p><hr>
+		<p v-once>{{oncedata}}</p>
 	</div>
 </body>
 <script>
-	var app = new  Vue({
+	var app = new Vue({
 		el:'#app',
 		data:{
-			isRed:false,
-		},
-		methods:{
-			turn(){
-				this.isRed=!(this.isRed)
-				console.log(this.isRed);
-			}
+			msg:'哦嚯嚯嚯',
+			oncedata:'zzzzzzz'
 		}
 	})
 </script>

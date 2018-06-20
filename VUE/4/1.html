@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.divStyle{
+			background: red;
+			width: 100px;
+			height: 100px;
+		}
+		.active{
+			background: green;
+			width: 100px;
+			height: 100px;
+		}
+		.error{
+			border:1px solid red;
+		}
+	</style>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>	
+<body>
+	<div id="app">
+		<!-- <div :class="{divStyle:isActive}"></div> -->
+		<!-- <div :class="[activeClass,errorClass]"></div> -->
+		<div :class="[{'active':isActive},errorClass]"></div>
+		<p :style="{'color':color,'fontSize':fontSize}">yoo</p>
+	</div>
+</body>
+<script>
+new Vue({
+	el:'#app',
+	data:{
+		isActive:true,
+		activeClass:'active',
+		errorClass:'error',
+		color:'red',
+		fontSize:'16px',
+	}
+})
+</script>
+</html>
