@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组件</title>
+	<style>
+	</style>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>	
+<body>
+	<div id="app">
+		<child-component msg="我是来自父组件的内容"></child-component>
+		<br>
+		<input type="text" v-model="parentmsg">
+		<bind-component :msg="parentmsg"></bind-component>
+	</div>
+</body>
+<script>
+	var app = new Vue({
+		el:'#app',
+		data:{
+			parentmsg:'风尔甚是喧嚣'
+		},
+		components:{
+			'child-component':{
+				props:['msg'],
+				template:'<div>{{msg}}</div>',
+				data:function(){
+					return{
+						conut:1
+					}
+				}
+			},
+			'bind-component':{
+				props:['msg'],
+				template:'<div>{{msg}}</div>',
+				data:function(){
+					return{
+						conut:1
+					}
+				}
+			}			
+		}
+	})
+	
+
+</script>
+</html>

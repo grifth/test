@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组件</title>
+	<style>
+	</style>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>	
+<body>
+	<div id="app">
+		<my-component msg="我是子组件传递的数据"></my-component>
+		<input type="number" v-model="width">
+		<p>{{width}}</p>
+		<width-component :width="width"></width-component>		
+	</div>
+</body>
+<script>
+	Vue.component('width-component',{
+		props:['width'],
+		template:'<div :style="style"></div>',
+		data:function(){
+			return{
+
+			}
+		},
+		computed:{
+			style:function(){
+				return{
+					width:this.width+'px',
+					background:'red',
+					height:'30px'
+				}
+			}
+		}
+	})	
+	Vue.component('my-component',{
+		props:['msg','width'],
+		template:'<div>{{count}}</div>',
+		data:function(){
+			return{
+				//props中的值可以通过this.xxx直接进行获取
+				count:this.msg
+			}
+		}
+	})
+	var app = new Vue({
+		el:'#app',
+		data:{
+			width:0
+		}
+	})
+</script>
+</html>
