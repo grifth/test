@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组件</title>
+	<style>
+	</style>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>	
+<body>
+	<div id="app">
+		<p>余额是</p><p>{{total}}</p>
+		<son-component @change="handleTotal"></son-component>
+	</div>
+</body>
+<script>
+	Vue.component('son-component',{
+		template:`
+		<div>
+			<button @click="handleincrease">+1</button>
+			<button @click="handleireduce">-1</button>
+		</div>
+		`,
+		data:function(){
+			return{
+				count:1000
+			}
+		},
+		methods:{
+			handleincrease(){
+				this.count+=1,
+				this.$emit('change',this.count)
+			},
+			handleireduce(){
+				this.count-=1
+				this.$emit('change',this.count)
+			}
+		}
+	})
+	new Vue({
+		el:'#app',
+		data:{
+			total:1000,
+		},
+		methods:{
+			handleTotal(data){
+				this.total=data
+			}
+		}
+	})
+
+</script>
+</html>

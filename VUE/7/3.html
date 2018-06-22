@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组件</title>
+	<style>
+	</style>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>	
+<body>
+	<div id="app">
+		<balance></balance>
+	</div>
+</body>
+<script>
+	Vue.component('balance',{
+		template:`
+			<div>
+				<show @show-balance="show_balance=true"></show>
+				<div v-if="show_balance">余额</div>
+			</div>
+		`,
+		data:function(){
+				console.log(1)
+			return{
+				show_balance:false,
+			}
+		}
+	});
+	Vue.component('show',{
+		template:`<button @click="on_click()">鱼儿</button>`,
+		methods:{
+			on_click(){
+				this.$emit('show-balance',{a:1,b:2})
+			}
+		}
+	})	
+	new Vue({
+		el:'#app',
+
+	})
+
+</script>
+</html>
