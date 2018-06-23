@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>slot</title>
+	<style>
+	#app{
+		width: 400px;
+		height: 400px;
+		margin: 100px 400px;
+		border: 1px solid red;
+	}
+	</style>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>	
+<body>
+	<div id="app">
+		<my-component>
+			<!-- 2.5.0之前 -->
+<!-- 			<template slot="abc"  slot-scope="prop">
+				<p>{{prop.text}}</p>
+				<p>{{prop.sss}}</p>
+			</template> -->
+			<!-- 之后 -->
+			<p slot="abc" slot-scope="prop">
+				{{prop.text}}
+				{{prop.sss}}
+			</p>
+		</my-component>
+	</div>
+		
+</body>
+<script>
+	Vue.component('my-component',{
+		template:`
+		<div>\
+			<slot text="我是来自子组件的数据" sss="sadasd" name="abc">\
+			</slot>\
+		</div>
+		`
+	})
+	new Vue({
+		el:'#app',
+		data:{
+
+		}
+	})
+</script>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>slot</title>
+	<style>
+	#app{
+		width: 400px;
+		height: 400px;
+		margin: 100px 400px;
+		border: 1px solid red;
+	}
+	</style>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>	
+<body>
+	<div id="app">
+		<component :is="thisView"></component>
+		<button @click="handleView('A')">A</button>
+		<button @click="handleView('B')">B</button>
+		<button @click="handleView('C')">C</button>
+		<button @click="handleView('D')">D</button>
+	</div>
+		
+</body>
+<script>
+	Vue.component('compA',{
+		template:`
+			<div>A</div>
+		`
+	})
+	Vue.component('compB',{
+		template:`
+			<div>B</div>
+		`
+	})
+	Vue.component('compC',{
+		template:`
+			<div>C</div>
+		`
+	})
+	Vue.component('compD',{
+		template:`
+			<div>D</div>
+		`
+	})			
+	new Vue({
+		el:'#app',
+		data:{
+			thisView:'compA'
+		},
+		methods:{
+			handleView:function(tag){
+				this.thisView = 'comp'+tag;
+			}
+		}
+	})
+</script>
+</html>

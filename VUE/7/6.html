@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组件</title>
+	<style>
+	</style>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>	
+<body>
+	<div id="app">
+		<huahua></huahua>
+		<goudan></goudan>
+	</div>
+</body>
+<script>
+	var Event = new Vue()
+	Vue.component('huahua',{
+		template:`
+		<div>
+			<input type="text" @keyup="on_change" v-model="i_said"/>
+		</div>
+		`,
+		data:function(){
+			return{
+				i_said:'yooo'
+			}
+		},
+		methods:{
+			on_change:function(){
+				Event.$emit('huahua-said-something',this.i_said)
+			}
+		}
+	})
+	Vue.component('goudan',{
+		template:`
+			<div>
+				花花:{{huahua_said}}
+			</div>
+		`,
+		data:function(){
+			return{
+				huahua_said:'',
+			}
+		},
+		mounted:function(){
+			var my = this
+			Event.$on('huahua-said-something',function(data){
+				my.huahua_said=data
+			})
+		}
+	})
+	new Vue({
+		el:'#app',
+	})
+
+</script>
+</html>

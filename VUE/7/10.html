@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>slot</title>
+	<style>
+	#app{
+		width: 400px;
+		height: 400px;
+		margin: 100px 400px;
+		border: 1px solid red;
+	}
+	</style>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>	
+<body>
+	<div id="app">
+		<my-component>
+			<p>我是父组件插入的内容</p>
+		</my-component>
+		<name-component>
+			<h3 slot="header">我是标题</h3>
+			<p>我是正文内容</p>
+			<p>正文内容有两段</p>
+			<p slot="footer">有是底部信息</p>
+		</name-component>
+	</div>
+		
+</body>
+<script>
+	Vue.component('my-component',{
+		template:`
+		<div>\
+			<slot>\
+				如果父组件没有插入内容,我就作为默认出现\
+			</slot>\
+		</div>
+		`
+	})
+
+	Vue.component('name-component',{
+		template:`
+		<div>\
+	<div class="header">
+		<slot name="header">
+			
+		</slot>
+	</div>
+	<div class="container">
+		<slot>
+			
+		</slot>
+	</div>
+	<div class="footer">
+		<slot name="footer">
+			
+		</slot>
+	</div>
+		</div>
+		`,
+		mounted:function(){
+			var header = this.$slots.header[0]
+			var text = header.elm.innerHTML;
+			console.log(text);
+		}
+	})
+	new Vue({
+		el:'#app',
+		data:{
+
+		}
+	})
+</script>
+</html>

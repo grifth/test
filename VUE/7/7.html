@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组件</title>
+	<style>
+	</style>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>	
+<body>
+	<div id="app">
+		<qwe ref="a"></qwe>
+		<asd ref="b"></asd>
+		<hr>
+		<child-component ref="c"></child-component>{{msg}}
+		<button @click="getChildData">我是父组件的按钮 要拿到子组件的内容</button>
+	</div>
+</body>
+<script>
+	Vue.component('qwe',{
+		template:`
+			<div><button @click="handle">点我向B传递</button></div>
+		`,
+		data:function(){
+			return{
+				aaa:'我是来自a的内容',
+				msg:'我是A中的msg'
+			}
+		},
+		methods:{
+			handle:function(){
+			this.$root.bus.$emit('lala',this.aaa)
+			}
+		}
+	})
+	Vue.component('asd',{
+		template:`
+			<div>我是组件</div>
+		`,
+		data:function(){
+			return{
+				msg:'我是B的MSG'
+			}
+		},
+		created:function(){
+			this.$root.bus.$on('lala',function(value){
+				console.log(value)
+			})
+		}
+	})
+	Vue.component('child-component',{
+		template:`
+			<button @click="setFatherData">通过点击我修改父亲的数据</button>
+		`,
+		data:function(){
+			return{
+				msg:'我是C的MSG'
+			}
+		},		
+		methods:{
+			setFatherData:function(){
+				this.$parent.msg= '数据修改了',
+				console.log(this.$parent.msg);
+			}
+		}
+	})	
+	var app = new Vue({
+		el:'#app',
+		data:{
+			bus:new Vue(),
+			msg:'数据还没修改',
+		},
+		methods:{
+			getChildData(){
+				//用来拿子组件的内容
+				console.log(this.$refs.a.msg);
+			}			
+		}
+	})
+
+</script>
+</html>
