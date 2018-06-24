@@ -49,6 +49,11 @@
 		},
 		computed:{
 			sum:function(){
+				for(key in this.$data){
+					if(!this.$data[key]){
+						this.$data[key] = 0
+					}
+				}
 				return this.chinese+this.math+this.english
 			},
 			average:function(){

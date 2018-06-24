@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.red{
+			color:red;
+		}
+	</style>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>	
+<body>
+	<div id="app">
+		{{fullName.set('嘿嘿')}}
+	</div>
+</body>
+<script>
+	var app = new  Vue({
+		el:'#app',
+		data:{
+			firstName:'yoo',
+			lastName:'yooo'
+		},
+		computed:{
+			fullName:{
+				get:function(){
+						return this.firstName+''+this.lastName
+				},
+				set:function(val){
+					var names = val.split('')
+					this.firstName = names[0];
+					this.lastName = names[1];
+				}
+			}
+		}	
+	})
+</script>
+</html>

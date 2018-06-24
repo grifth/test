@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>	
+<body>
+	<div id="app">
+		{{price|currency()}}
+	</div>
+</body>
+<script>
+	Vue.filter('currency',function(val,dollors){
+		val = val ||0;
+		dollors = dollors || '元'
+		return val + dollors
+	})
+	var app = new  Vue({
+		el:'#app',
+		data:{
+			price:'10'
+		}
+	})
+</script>
+</html>
