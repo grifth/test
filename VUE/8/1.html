@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#app{
+			width: 300px;
+			height: 150px;
+			border:1px solid black;
+			margin: 150px auto;
+
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		获取脚垫：<input type="text" v-focus>
+		<hr>
+		<div v-cuihua:goudan.a.b.c="obq"></div>
+	</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script> 
+<script>
+	Vue.directive('focus',{
+		inserted:function(el){
+			el.focus()
+		}
+
+	})
+	Vue.directive('cuihua',{
+		bind:function(el,binding,vnode){
+			var keys = []
+			for(var key in vnode){
+				console.log(key);
+				keys.push(key)
+			}
+			console.log(keys);
+			el.innerHTML= 
+			'name'+':'+ binding.name+'<hr>'+
+			'value'+':'+ binding.value+'<hr>'+
+			'expression'+':'+ binding.expression+'<hr>'+
+			'argument'+':'+ binding.arg+'<hr>'+
+			'modifiers'+':'+ JSON.stringify(binding.modifiers)
+		}
+	})
+	var app = new Vue({
+		el:'#app',
+		data:{
+			abc:'我是value',
+			obq:'我是自定义指令所绑定的值'
+		}
+	})
+</script>
+</html>

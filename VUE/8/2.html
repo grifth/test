@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.card{
+			width: 200px;
+			background: #ccc;
+			padding: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<button @click="pinned=!pinned">定住/取消</button>
+		<div v-pin.bottom.left="pinned" class="card">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit labore obcaecati ducimus fuga perspiciatis dolor amet veritatis adipisci vitae! Dolor exercitationem excepturi aliquam voluptatem labore porro dolorum in, non omnis.</div>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur architecto beatae non perspiciatis, nostrum voluptates repellat aspernatur impedit ullam reprehenderit cum maiores qui, cumque illo error ipsum culpa ducimus? Libero.
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea sapiente, officia optio vel sunt, repellat ab odit nisi maiores ipsam sint quisquam? Mollitia, aut, possimus. Id rem minus, quos iure!
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum deleniti sed officia aut et praesentium aperiam harum adipisci, autem sit totam illum incidunt asperiores quia dolorum, blanditiis iusto, vero ullam?
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur architecto beatae non perspiciatis, nostrum voluptates repellat aspernatur impedit ullam reprehenderit cum maiores qui, cumque illo error ipsum culpa ducimus? Libero.
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea sapiente, officia optio vel sunt, repellat ab odit nisi maiores ipsam sint quisquam? Mollitia, aut, possimus. Id rem minus, quos iure!
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum deleniti sed officia aut et praesentium aperiam harum adipisci, autem sit totam illum incidunt asperiores quia dolorum, blanditiis iusto, vero ullam?
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur architecto beatae non perspiciatis, nostrum voluptates repellat aspernatur impedit ullam reprehenderit cum maiores qui, cumque illo error ipsum culpa ducimus? Libero.
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea sapiente, officia optio vel sunt, repellat ab odit nisi maiores ipsam sint quisquam? Mollitia, aut, possimus. Id rem minus, quos iure!
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum deleniti sed officia aut et praesentium aperiam harum adipisci, autem sit totam illum incidunt asperiores quia dolorum, blanditiis iusto, vero ullam?
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur architecto beatae non perspiciatis, nostrum voluptates repellat aspernatur impedit ullam reprehenderit cum maiores qui, cumque illo error ipsum culpa ducimus? Libero.
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea sapiente, officia optio vel sunt, repellat ab odit nisi maiores ipsam sint quisquam? Mollitia, aut, possimus. Id rem minus, quos iure!
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum deleniti sed officia aut et praesentium aperiam harum adipisci, autem sit totam illum incidunt asperiores quia dolorum, blanditiis iusto, vero ullam?
+
+	</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	Vue.directive('pin',function(el,binding){
+			var pinned = binding.value
+			var position = binding.modifiers
+		if(binding.value){
+			el.style.position='fixed'
+			for(var key in position){
+				console.log('key')
+				if(position[key]){
+					el.style[key]='10px'
+				}
+			}
+		}else{
+			el.style.position='static'
+		}
+	})
+	var app = new Vue({
+		el:'#app',
+		data:{
+			pinned:false,
+		}
+	})
+</script>
+</html>
