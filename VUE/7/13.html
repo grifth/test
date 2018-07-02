@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>	
+<body>
+    <div id="app">
+        <input type="number" v-model="width">
+        <width-component :wid="width"></width-component>
+        <my-component :f="f"></my-component>
+    </div>
+</body>
+<script>
+
+Vue.component('myComponent',{
+    props:{
+        // d:{
+        //     type:Number,
+        //     required:true
+        // },
+        // e:{
+        //     type:Array,
+        //     default:function(){
+        //         return [666]
+        //     }
+        // },
+        f:{
+            validator:function(val){
+                return val<110;
+            }
+        }
+
+    },
+    template:`<div>{{f}}</div>`,
+    data:function(){
+        return{
+            abc:this.myMsg
+        }
+    }
+})
+
+Vue.component('width-component',{
+    props:['wid'],
+    template:`<div :style="style"></div>`,
+    data:function(){
+        return{
+
+        }
+    },
+    computed:{
+        style:function(){
+            return{
+                width:this.wid+'px',
+                background:'red',
+                height:'30px'
+            }
+        }
+    }
+})
+ var app  = new Vue({
+     el:'#app',
+     data:{
+         width:0,
+         e:[123],
+        f:90
+     }
+ })
+</script>
+</html>

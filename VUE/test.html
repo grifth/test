@@ -2,55 +2,50 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Document</title>
 </head>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>	
 <body>
 	<div id="app">
-	    <select v-model="site">  
-	        <option value="Google http://www.google.com">Google http://www.google.com</option>  
-	        <option value="baidu http://www.baidu.co">baidu http://www.baidu.com</option>  
-	        <option value="网易 http://www.163.com">网易 http://www.163.com</option>  
-	    </select> 
-	    <p>{{site}}</p> 
-	</div>
+		<my-component my-msg='lalala'></my-component>
+		<type-component :a="a" :b="b" :c="c"></type-component>
+	</div>	
 </body>
 <script>
-	var app = new  Vue({
+	Vue.component('my-component',{
+		template:`<button>{{abc}}</button>`,
+		props:['myMsg'],
+		data(){return{
+			abc:this.myMsg
+		}}
+	})
+	Vue.component('typeComponent',{
+		template:`<button>{{as}}</button>`,
+		props:{
+			a:Number,
+			b:[String,Number],
+			c:{
+				type:Boolean,
+				default:true
+			},
+			d:{
+				type:Number,
+				required:true
+			}
+		},
+		data(){return{
+			as:this.c
+		}}
+	})
+	var app = new Vue({
 		el:'#app',
 		data:{
-			message: 'Hello',														
-			name: 'Google',  
-      		url: 'http://www.google.com'  
-		},
-  computed: { // getter，setter计算属性都有
-	    reversedMessage: {
-	      // getter
-	      get: function () {
-	        console.log('getter called')
-	        return this.message.split('').reverse().join('')
-	      },
-	      // setter
-	      set: function (newValue) {
-	        console.log('newValue: ' + newValue)
-	        this.message = newValue
-	      }
-	    },
-	    site: {  
-	      // getter  
-	      get: function () {  
-	        return this.name + ' ' + this.url  
-	      },  
-	      // setter  
-	      set: function (newValue) {  
-	      	console.log(arguments);
-	        let names = newValue.split(' ')  
-	        this.name = names[0]  
-	        this.url = names[names.length - 1]  
-	      }  
-	    }  
-
-  }
+			a:1,
+			b:'yooo',
+			c:'asdas',
+		}
 	})
 </script>
 </html>
