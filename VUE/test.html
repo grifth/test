@@ -9,42 +9,33 @@
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>	
 <body>
 	<div id="app">
-		<my-component my-msg='lalala'></my-component>
-		<type-component :a="a" :b="b" :c="c"></type-component>
+		<my-component :name="name" v-model="name"></my-component>
+		{{name}}
 	</div>	
 </body>
 <script>
-	Vue.component('my-component',{
-		template:`<button>{{abc}}</button>`,
-		props:['myMsg'],
-		data(){return{
-			abc:this.myMsg
-		}}
-	})
-	Vue.component('typeComponent',{
-		template:`<button>{{as}}</button>`,
-		props:{
-			a:Number,
-			b:[String,Number],
-			c:{
-				type:Boolean,
-				default:true
-			},
-			d:{
-				type:Number,
-				required:true
-			}
-		},
-		data(){return{
-			as:this.c
-		}}
-	})
+    Vue.component('my-component',{
+        render:function (createElement) {
+            var self = this;//指的就是当前的VUE实例
+            return createElement('input',{
+                domProps:{
+                    value: self.name
+                },
+                on:{
+                    input:function (event) {
+                        var a = this;
+                        //此处的this指的是什么？指的就是window
+                        self.$emit('input',event.target.value)
+                    }
+                }
+            })
+        },
+        props:['name']
+    })
 	var app = new Vue({
 		el:'#app',
 		data:{
-			a:1,
-			b:'yooo',
-			c:'asdas',
+			name:''
 		}
 	})
 </script>

@@ -9,32 +9,41 @@
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script> 
 <body>
     <div id="app">
-        <child></child>
+        <button @click="switchShow">CLICK</button>
+        <br>
+        <my-component :show="show"></my-component>
     </div>
 
 </body>
 <script>
-    
-    // Vue.component('child',{
-    //     render:function(createElement){
-    //         return createElement({
-    //             template:`<div>AAAA</div>`
-    //         })
-    //     }
-    // })
-
-    Vue.component('child',{
+    Vue.component('my-component',{
+        props:['show'],
         render:function(createElement){
-                var domFun = function(){
-                return{
-                    template:`<div>AAAA</div>`
+                var imgsrc; 
+                if(this.show){
+                    imgsrc=`https://gss3.bdstatic.com/-Po3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=36f83fbe3501213fcf3349da6cdc51ec/8b82b9014a90f603c86597203512b31bb151ed84.jpg`
+                }else{
+                    console.log(this.show)
+                    imgsrc=`https://gss0.bdstatic.com/-4o3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=a75893b1a764034f1bc0ca54ceaa1254/3b87e950352ac65cfc9b3b1ff7f2b21192138ac4.jpg`
                 }
-            }
-            return createElement(domFun())
-        }
-    })
+                return createElement('img',{
+                    attrs:{
+                        src:imgsrc
+                    }
+                })
+        }        
+    })    
+
     var app = new Vue({
         el:'#app',
+        data:{
+            show:false
+        },
+        methods:{
+            switchShow(){
+                this.show=!this.show
+            }
+        }
     })
 </script>
 </html>
