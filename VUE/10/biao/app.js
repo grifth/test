@@ -5,6 +5,7 @@ var routes = [
             template:`
             <div>
                 <h1>首页</h1>
+                <span>$route.params.msg</span>
             </div>
             `,
             }
@@ -15,23 +16,14 @@ var routes = [
                 template:`
                 <div>
                     <h1>关于我们</h1>
+                    <span>$route.params.msg</span>
                 </div>
                 `,
                 }
-            },      
-            {
-                path:'/user/:name',
-                component:{
-                    template:`
-                    <div>
-                        <div>我叫:{{$route.params.name}}</div>
-                        <div>今年:{{$route.query.age}}</div>
-                    </div>
-                    `,
-                    }
-                }, 
+            },
 ];
 
+// import hei from './hei.vue'
 var router = new VueRouter({
     routes : routes,
 })
@@ -39,4 +31,11 @@ var router = new VueRouter({
 new Vue({
     el:'#app',
     router:router,
+    methods:{
+        surf:function(){
+          setTimeout(()=>{
+              this.$router.push('/about')
+          },2000)
+        }
+    }
 });

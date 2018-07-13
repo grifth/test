@@ -5,23 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        *{
+          padding: 0;
+          margin: 0;
+        }
+        .header{
+          background: #5a5555;
+          height: 50px;
+        }
+        ul{
+            list-style:none;
+            float: right;
+            margin:5px;
+        }
+        li{
+          display: inline-block;
+          padding: 10px 15px;
+        }
+    </style>
 </head>
-
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.0.1/vue-router.min.js"></script>
 <body>
     <div id="app">
-        <div>
+        <!-- <div>
         <router-link to="/about">关于我们</router-link>
         <router-link to="/">首页</router-link>
         <router-link to="/user/whh">whh</router-link>
         <router-link to="/user/lgd">lgd</router-link>
+        <button @click="surf">漫游</button>
+        </div> -->
+        <div class="header">
+          <ul>
+            <router-link :to="{name:'/',params:{msg:'传递的参数'}}"><li>首页</li></router-link>
+            <router-link :to="{name:'/about',params:{msg:传递的参数}}"><li>新手入门</li></router-link>
+            <router-link to="/hei"><li>api</li></router-link>
+            <router-link to="/about"><li>关于</li></router-link>
+            <router-link to="/about"><li>登录</li></router-link>
+            <router-link to="/about"><li>注册</li></router-link>
+          </ul>
         </div>
         <div>
-                <router-view></router-view>
+          <router-view></router-view>
         </div>
     </div>
 
 </body>
-<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script> 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.0.1/vue-router.min.js"></script>
 <script src="./app.js"></script>
+
 </html>

@@ -19,12 +19,12 @@
 		}
 	</style>
 </head>
-<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>	
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 <body>
 	<div id="app">
 		<!-- <div :class="{divStyle:isActive}"></div> -->
 		<!-- <div :class="[activeClass,errorClass]"></div> -->
-		<div :class="[{'active':isActive},errorClass]"></div>
+		<div :class="[{'active':isActive},error]"></div>
 		<p :style="{'color':color,'fontSize':fontSize}">yoo</p>
 	</div>
 </body>
@@ -34,7 +34,6 @@ new Vue({
 	data:{
 		isActive:true,
 		activeClass:'active',
-		errorClass:'error',
 		color:'red',
 		fontSize:'16px',
 	}
