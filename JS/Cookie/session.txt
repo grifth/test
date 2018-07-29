@@ -1,0 +1,11 @@
+Cookie
+1.服务器通过Set-Cookie 头给客户端一串字符串
+2.客户端每次访问相同的域名网站时 必须带上这串字符串
+3.客户端要在一段时间内保存这个Cookie
+
+Session
+1.将SessionID(随机数)通过Cookie发给客户端
+2.客户端访问服务器时,服务器读取SessionID
+3.服务器有一块内存(哈希表)保存了所有session
+4.通过SessionID 我们可以得到对于用户的隐私信息 如id,email
+5.这块内存(哈希表)就是服务器上的所有session

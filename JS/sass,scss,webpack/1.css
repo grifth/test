@@ -1,0 +1,17 @@
+.box {
+  width: 100%;
+  height: 100%; }
+  .box .left {
+    width: 100px;
+    height: 100px;
+    background: red;
+    position: absolute;
+    left: 0;
+    top: 0; }
+  .box .right {
+    width: 100px;
+    height: 100px;
+    background: red;
+    position: absolute;
+    right: 0;
+    top: 0; }

@@ -6,36 +6,43 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Document</title>
 </head>
-<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>	
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 <body>
 	<div id="app">
-		<my-component :name="name" v-model="name"></my-component>
-		{{name}}
-	</div>	
+		<my-acomponent></my-acomponent>
+		<my-bcomponent></my-bcomponent>
+	</div>
 </body>
 <script>
-    Vue.component('my-component',{
-        render:function (createElement) {
-            var self = this;//指的就是当前的VUE实例
-            return createElement('input',{
-                domProps:{
-                    value: self.name
-                },
-                on:{
-                    input:function (event) {
-                        var a = this;
-                        //此处的this指的是什么？指的就是window
-                        self.$emit('input',event.target.value)
-                    }
-                }
-            })
-        },
-        props:['name']
-    })
+	Vue.component('my-acomponent',{
+		template:`<div><button @click="handle">点我向B传</button></div>`,
+		data(){
+			return{
+				aaa:'我是A呀'
+			}
+		},
+		methods:{
+			handle(){
+				this.$root.bus.$emit('lala',this.aaa)
+			}
+		}
+	})
+
+	Vue.component('my-bcomponent',{
+		template:'<div></div>',
+		created(){
+			this.$root.bus.$on('lala',(val)=>{
+				alert(val)
+			})
+		}
+	})
+
 	var app = new Vue({
 		el:'#app',
 		data:{
-			name:''
+				bus:new Vue()
+		},
+		methods:{
 		}
 	})
 </script>

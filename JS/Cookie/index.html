@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <h1>你的密码是：__password__</h1>
+  <div id="app">
+        {{test}}
+  </div>
+  <img src="/a" alt="">
+</body>
+<script src="./vue"></script>
+<!-- <script>
+let a = localStorage.getItem('a')
+if(!a){
+  a=0
+}else{
+  a= parseInt(a,10)+1
+}
+localStorage.setItem('a',a)
+</script> -->
+<script>
+new Vue({
+    el:'#app',
+    data:{
+          test:'123'
+    }
+  })
+</script>
+</html>
