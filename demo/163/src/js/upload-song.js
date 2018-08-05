@@ -49,8 +49,8 @@
                         var res = JSON.parse(info.response);
                         var sourceLink = `${domain}/${(res.key)}`;
                         window.eventHub.emit('upload',{
-                            link:sourceLink,
-                            key:res.key
+                            url:sourceLink,
+                            name:res.key
                         })
                         //  获取上传成功后的文件的Url
                     },
