@@ -67,7 +67,7 @@
             this.model = model
             this.bindEvents()
             this.view.render(this.model.data)
-            window.eventHub.on('upload',(data)=>{
+            window.eventHub.on('upload',(data)=>{             
                 this.model.data = data 
                 this.view.render(this.model.data)
             })
@@ -80,6 +80,7 @@
                 needs.map((string)=>{
                     data[string] =  this.view.$el.find(`[name="${string}"]`).val()
                 })
+                
                 this.model.create(data)
                     .then(()=>{
                       this.view.reset()
