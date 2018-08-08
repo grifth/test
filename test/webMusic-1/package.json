@@ -1,0 +1,26 @@
+{
+  "name": "webmusic",
+  "version": "1.0.0",
+  "description": "1. open first terimal\r ```\r git clone git@github.com:wojiaofengzhongzhuifeng/webMusic-1.git\r cd webMusic-1\r npm install\r http-server -c-1\r ```\r 2. 打开 http://127.0.0.1:8080/src/index.html\r 3. open second terimal\r ```\r cd webMusic-1\r node server 8888\r ```\r 4. 打开 http://127.0.0.1:8080/src/admin.html",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wojiaofengzhongzhuifeng/webMusic.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wojiaofengzhongzhuifeng/webMusic/issues"
+  },
+  "homepage": "https://github.com/wojiaofengzhongzhuifeng/webMusic#readme",
+  "dependencies": {
+    "leancloud-storage": "^3.6.0",
+    "plupload": "^2.3.2",
+    "qiniu": "^7.1.2",
+    "qiniu-js": "^1.0.22"
+  }
+}

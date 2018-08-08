@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="UTF-8">
+        <title>管理界面</title>
+        <link rel="stylesheet" href="./css/default.css">
+
+        <style type="text/css">
+            .icon {
+                width: 1em; height: 1em;
+                vertical-align: -0.15em;
+                fill: currentColor;
+                overflow: hidden;
+            }
+        </style>
+        <script src="//at.alicdn.com/t/font_574513_wwi4prvxthiu23xr.js"></script>
+
+    </head>
+
+<body>
+<script src="//at.alicdn.com/t/font_574513_nhc95ocgzypq4cxr.js"></script>
+
+        <div class="page">
+            <aside class="siderbar">
+                    <div class="newSong"></div>
+                        <div id="songList-container">
+
+                        </div>
+                    <div class="uploadArea">
+                        <div id="uploadContainer" class="draggable">
+                            <span id="uploadButton" class="clickable">
+                                点击上传文件
+                            </span>
+                        </div>
+                    </div>
+            </aside>
+            <main>
+
+            </main>  
+        </div>
+
+    <div class="site-loading-ct">
+        
+    </div>
+
+
+<script src="../vendors/moxie.min.js"></script>
+        <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="../node_modules/qiniu-js/dist/qiniu.min.js"></script>
+<script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
+<script src="../node_modules/plupload/js/plupload.min.js"></script>
+<script src="./js/admin/initializers/av.js"></script>
+<!-- 引入自己的模块 -->
+<script src="./js/admin/eventHub.js"></script>
+<script src="./js/admin/song-form.js"></script>
+<script src="./js/admin/new-song.js"></script>
+
+        <!--这是动态产生icon的代码-->
+<script src="./js/admin/song-list.js"></script>
+<script src="./js/admin/upload-song.js"></script>
+<script src="./js/admin/loading.js"></script>
+
+</body>
+</html>

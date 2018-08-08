@@ -1,0 +1,333 @@
+  
+
+  /* 消除原生样式 */
+li{
+    list-style: none;
+}
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+  color: #363636;
+}
+*::after{
+    box-sizing: border-box
+}
+*::before{
+    box-sizing: border-box
+}
+a{
+    color: inherit;
+    text-decoration: none;
+}
+input:focus {
+  outline: none;
+}
+  /* 移动端 CSS */
+  body{
+    font-size: 15px;
+    background: white;
+  }
+  .sectionTitle {
+    border-left: 2px solid #D43C33;
+    font-size: 17px;
+    line-height: 1;
+    padding-left: 8px;
+    margin: 20px 0 8px;
+    font-weight: inherit;
+    font-size: 17px;
+    color: #363636;
+  }
+  .playButton{
+    width:22px;
+    height:22px;
+    border-radius: 50%;
+  }
+  .triangle{
+    width:10px;
+    height:10px;
+    
+  }
+  .sticky{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    background: white;
+  }
+  section.topbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #D43C33;
+    padding: 17px 10px;
+  }
+  section.topbar .logo>svg{
+    width: 142px;height: 25px;
+    vertical-align: top;
+  
+  }
+  section.topbar > a{
+    color: white;
+    display: inline-block;
+    padding: 5px 11px;
+    line-height: 20px;
+    position: relative;
+  }
+  section.topbar > a::after{
+    content:'';
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    border: 1px solid white;
+    border-radius: 50px;
+    transform: scale(0.5);
+    transform-origin: 0 0;
+  }
+  
+  /* tabs-nav */
+  .tabs-nav{
+    display: flex;
+    border-bottom: 1px solid #CCCCCC;
+  }
+  .tabs-nav>li{
+    width: 33.333333%;
+    text-align: center;
+    line-height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .tabs-nav>li>.text{
+    padding: 10px 5px;
+    position: relative;
+    top: 1px;
+  }
+  .tabs-nav >li.active{
+
+  }
+  .tabs-nav >li.active>.text{
+    color: #d33a31;
+  }
+  .tabs-nav >li.active>.text::after{
+    content: '';
+    position: absolute;
+    height: 2px;
+    background: #D43C33;
+    bottom: 1px;
+    left: 0;
+    width: 100%;
+  }
+  .tab-content{
+    margin-top: 105px;
+  }
+  .tab-content > li{
+    display: none;
+  }
+  .tab-content > li.active{
+    display: block;
+  }
+  .noCollapse::before{
+    content:'';
+    display: table;
+  }
+  .noCollapse::after{
+    content:'';
+    display: table;
+  }
+  
+  section.playlists{
+  }
+  section.playlists > ol.songs{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-size: 13px;
+  }
+  section.playlists > ol.songs > li{
+    width: 32.8%;
+    margin: 8px 0;
+  }
+  section.playlists > ol.songs > li p{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    line-height: 18px;
+    height: 36px;
+    padding: 0 6px;
+  }
+  section.playlists > ol.songs > li img{
+    width: 100%;
+  }
+  section.songs{}
+  section.songs > .list {
+    margin-top: 18px;
+  }
+  section.songs > .list > li > h3{
+    font-size: 17px;
+  }
+  section.songs > .list > li > p{
+    font-size: 12px;
+    color: #888;
+  }
+  section.songs > .list > li{
+    position: relative;
+    margin-left: 10px;
+    padding-bottom: 6px;
+    padding-top: 5px;
+    border-bottom: 1px solid #E2E2E3;
+  }
+  section.songs > .list .playButton{
+    position: absolute;
+    right:8px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  section.songs > .list .icon-play{
+    width: 22px;
+    height: 22px;
+    vertical-align: middle;
+    fill: #AAA;
+  }
+  section.songs > .list .icon-sq{
+    fill: #FE672E;
+  }
+  section.art{
+    padding-top: 38px;
+    padding-bottom: 18px;
+    background: transparent url(//i.loli.net/2017/08/25/599f862b9c98d.png) no-repeat center;
+    background-size: cover;
+    text-align: center;
+  }
+  section.art svg{
+    width: 230px;
+    height: 44px;
+  }
+  section.art .link-wrapper > a{
+    display: inline-block;
+    border: 1px solid;
+    line-height: 40px;
+    font-size: 16px;
+    padding: 0 19px;
+    border-radius: 20px;
+    color:#D43C33;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+  section.art .copyright{
+    font-size: 12px;
+    color: #888;
+    transform: scale(.75);
+  }
+
+
+
+
+
+  .everySong2{
+    display: flex;
+    flex-direction:row;
+  }
+  .everySong2 .number{
+      font-size: 17px;
+      color: #df3436;
+      padding-left:12px;
+      font-family: Helvetica, sans-serif;
+      line-height: 55px;
+      padding-right:10px;
+  }
+  .title2{
+      display: flex;
+      justify-content:space-between;
+      flex-grow: 1;
+      border-bottom: 1px solid #EFEFEF;
+      margin-top: 6px;
+  }
+  .playButton2{
+      line-height: 55px;
+  }
+  .play2{
+      width:22px;
+      height:22px;
+      margin-right: 10px;
+  }
+  .withOutPlay .singer{
+      color: #878787
+  }
+
+  .frontPage{
+      width:100vw;
+      background: url("http://upload-images.jianshu.io/upload_images/5529438-16fc29725f97466e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240") no-repeat center;
+      height:160px;
+  }
+  .page-footer {
+      color: #878787;
+      text-align: center;
+  }
+
+
+  /*第三个tab*/
+  .search-ct{
+      margin-top:17px;
+    width:100vw;
+      height:30px;
+      padding-bottom:15px;
+
+  }
+  .search{
+      width:80vw;
+      margin:0 auto;
+      display: flex;
+      position: relative;
+  }
+  .search div.icon{
+      border:15px solid #EAECEC;
+      border-radius: 40px 10px 10px 40px;
+      background:#EAECEC;
+      width:0;
+  }
+  .search input{
+      flex-grow: 1;
+      background:#EAECEC;
+      height:30px;
+      border:none;
+      padding:2px
+  }
+
+  .search div.close{
+      border:15px solid #EAECEC;
+      border-radius: 10px 40px 40px 10px;
+      background:#EAECEC;
+      width:0;
+  }
+  .search svg.icon{
+      position: absolute;
+      top: 8px;
+      left: 10px;
+  }
+
+  .searchHot{
+      margin-left:41px;
+        padding-top:15px;
+  }
+  .searchHot p{
+      font-size: 12px;
+      color: #666;
+      padding-bottom:10px;
+  }
+  .searchHot span{
+      color:#666;
+      font-size: 14px;
+      border:1px solid rgb(211,212,218);
+      padding: 5px;
+      margin-left: 19px;
+      border-radius: 10px;
+  }
+
+
+
+
