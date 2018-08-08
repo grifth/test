@@ -9,7 +9,6 @@
         render(data){
             let $el = $(this.el)
             $el.html(this.template)
-            console.log(data);
             let {songs} = data 
             let liList = songs.map((song)=>$('<li></li>').text(song.name).attr('data-id',song.id))
             $el.find('ul').empty()
@@ -30,6 +29,7 @@
         find(){
              var query = new AV.Query('Song')
            return query.find().then((songs)=>{
+               console.log(songs);
                 this.data.songs = songs.map((song)=>{
                     return {id:song.id,...song.attributes}
                 })
@@ -57,6 +57,10 @@
         bindEvents(){
             $(this.view.el).on('click','li',(e)=>{
                 this.view.activeItem(e.currentTarget)
+                let songId = e.currentTarget.getAttribute('data-id')
+                window.eventHub.emit('select',{
+                    id:songId
+                })
             })
         }
     }
