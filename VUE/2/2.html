@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 100vh;
+			height: 100vh;
+		}
+		.test{
+			width: 100px;
+			height: 100px;
+		}
+		.red{
+			background:red;
+		}
+	</style>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>	
+<body>
+	<div id="app">
+        {{price|currency('asdas')}}
+	</div>
+</body>
+<script>
+Vue.filter('currency',function(val,doll){
+  		val = val ||0;
+		dollors = doll || '元'
+		return val + dollors
+})
+	var app = new  Vue({
+		el:'#app',
+		data:{
+			price:'10'
+		}
+	})
+//console.log(app.$el) 
+// console.log(app.$data)
+</script>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>	
+<body>
+	<div id="app">
+	    <select v-model="site">  
+	        <option value="Google http://www.google.com">Google http://www.google.com</option>  
+	        <option value="baidu http://www.baidu.co">baidu http://www.baidu.com</option>  
+	        <option value="网易 http://www.163.com">网易 http://www.163.com</option>  
+	    </select> 
+	    <p>{{site}}</p> 
+	</div>
+</body>
+<script>
+	var app = new  Vue({
+		el:'#app',
+		data:{														
+		       name: 'Google',  
+      		       url: 'http://www.google.com'  
+		},
+  computed: { 
+	    site: {  
+	      // getter  
+	      get: function () {
+	        return this.name + ' ' + this.url  
+	      },  
+	      // setter  
+	      set: function (newValue) {  
+	      	console.log(arguments);
+	        let names = newValue.split(' ')  
+	        this.name = names[0]  
+	        this.url = names[names.length - 1]  
+	      }  
+	    }  
+  }
+	})
+</script>
+</html>

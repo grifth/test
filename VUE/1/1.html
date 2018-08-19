@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+        [v-cloak]:{
+        display: none;
+        }
+	</style>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>	
+<body>
+	<div id="app">
+        <p v-cloak>{{haha}}</p>
+    </div>
+</body>
+<script>
+	var plusDate = function(value){
+		return value<10?'0'+value:value
+	}
+	var app = new  Vue({
+		el:'#app',
+		data:{
+			haha:1
+		},
+        
+	})
+//console.log(app.$el) 
+// console.log(app.$data)
+</script>
+</html>
