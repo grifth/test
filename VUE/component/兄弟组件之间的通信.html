@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>	
+<body>
+	<div id="app">
+        <p>{{msg}}</p>
+        <my-coma ref="a"></my-coma>
+        <my-comb></my-comb>
+    </div>
+</body>
+<script>
+    Vue.component('my-coma',{
+        template:`
+            <div>
+                <button @click="hello">click</button>
+                <button @click="handle">click</button>
+            </div>
+        `,
+        data(){
+            return{
+                aaa:'我是来自a',
+                msg:'我是来自a中的msg'
+            }
+        },
+        methods:{
+            hello(){
+                this.$root.bus.$emit('lala',this.aaa)
+            },
+            handle(){
+                this.$parent.msg="数据被改了"
+            }            
+        }
+    })
+    Vue.component('my-comb',{
+        template:`
+            <div>
+            </div>
+        `,
+        created(){
+            this.$root.bus.$on('lala',function(val){
+                alert(val)
+            })
+        },
+        data(){
+            return{
+            }
+        },
+        methods:{
+        }
+    })
+    var app  = new Vue({
+        el:'#app',
+        data:{
+            bus:new Vue(),
+            msg:'0'
+        },
+        methods:{
+            getData(){
+            }
+        },
+        mounted() {
+            console.log(this.$refs.a.msg);
+            
+        },
+
+    })
+</script>
+</html>

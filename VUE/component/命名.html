@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>	
+<body>
+    <!-- body中只能使用 kebab-case -->
+    <!-- 在body中 不区分大小写 大写的最后也会变成小写-->
+    <!-- 如果组件是完全用大写字母命名的 那么body中渲染时候 每个大写字母都要用短横线连接  -->
+	<div id="app">
+        <M-Y-C-O-M></M-Y-C-O-M>
+        <my-com></my-com>
+        <my-Component my-msg="123456"></my-Component>
+        
+    </div>
+</body>
+<script>
+    //组件名不能用kebab-case
+    Vue.component('MYCOM',{
+        template:`<p>123</p>`,
+    })
+    Vue.component('myCom',{
+        template:`<p>123</p>`,
+    })
+    Vue.component('myComponent',{
+        props:['myMsg'],//camel-case kebab-case都可以
+        template:`<div><p>{{myMsg}}</p></div>`,//template这里只能使用camel-case
+        data(){
+            return{
+                // abc:this.myMsg
+                //this. 之后也只能接camel-case
+            }
+        }
+    })
+    var app  = new Vue({
+        el:'#app',
+        data:{
+
+        }
+    })
+</script>
+</html>
