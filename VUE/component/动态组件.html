@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+<body>
+    <div id="app">
+        <component :is="thisView"></component>
+        <button @click="handleView('a')">A</button>
+        <button @click="handleView('b')">B</button>
+    </div>
+</body>
+<script>
+    Vue.component('compa',{
+        template:'<div><P>compa</p></div>'
+    })
+    Vue.component('compb',{
+        template:'<div><P>compb</p></div>'
+    })
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            thisView: 'compb'
+        },
+        methods: {
+            handleView(val) {
+                this.thisView = `comp${val}`
+            }
+        }
+    })
+</script>
+
+</html>

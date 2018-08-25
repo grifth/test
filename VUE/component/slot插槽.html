@@ -8,17 +8,36 @@
 <body>
 	<div id="app">
         <my-com>
-            <h1>{{msg}}</h1>
+            <h3 slot="header">我是标题</h3>
         </my-com>
+        <my-com1>
+            <p slot="header" slot-scope="prop">
+                {{prop.text}}
+            </p>
+        </my-com1>
     </div>
 </body>
 <script>
     Vue.component('my-com',{
         template:`
         <div>
-            <slot>
-                默认输出
-            </slot>
+            <div class="header">
+                    <slot name="header">
+                    </slot>
+            </div>
+        </div>
+        `,
+        mounted(){
+            var header = this.$slots.header;
+            console.log(header);
+        }
+    })
+    Vue.component('my-com1',{
+        template:`
+        <div>
+                    <slot text="我是子组件的数据" name="header">
+                        
+                    </slot>
         </div>
         `
     })
@@ -28,8 +47,9 @@
             bus:new Vue(),
         },
         methods:{
-            msg:'123'
+
         },
+
     })
 </script>
 </html>
