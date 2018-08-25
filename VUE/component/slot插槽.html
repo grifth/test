@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>	
+<body>
+	<div id="app">
+        <my-com>
+            <h1>{{msg}}</h1>
+        </my-com>
+    </div>
+</body>
+<script>
+    Vue.component('my-com',{
+        template:`
+        <div>
+            <slot>
+                默认输出
+            </slot>
+        </div>
+        `
+    })
+    var app  = new Vue({
+        el:'#app',
+        data:{
+            bus:new Vue(),
+        },
+        methods:{
+            msg:'123'
+        },
+    })
+</script>
+</html>
