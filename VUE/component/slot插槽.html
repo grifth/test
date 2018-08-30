@@ -11,9 +11,9 @@
             <h3 slot="header">我是标题</h3>
         </my-com>
         <my-com1>
-            <p slot="header" slot-scope="prop">
+            <h1 slot="header" slot-scope="prop">
                 {{prop.text}}
-            </p>
+            </h1>
         </my-com1>
     </div>
 </body>
@@ -28,7 +28,7 @@
         </div>
         `,
         mounted(){
-            var header = this.$slots.header;
+            var header = this.$slots;
             console.log(header);
         }
     })
@@ -44,7 +44,6 @@
     var app  = new Vue({
         el:'#app',
         data:{
-            bus:new Vue(),
         },
         methods:{
 

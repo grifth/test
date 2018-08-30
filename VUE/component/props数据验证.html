@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+<body>
+    <div id="app">
+        <my-com ></my-com>
+    </div>
+</body>
+<script>
+
+
+Vue.component('my-com',{
+  props:{
+    a:{
+        type:Number,
+        required:true
+    }
+  },
+  template:'<div>{{a}}</div>'
+})
+var app = new Vue({
+  el:'#app',
+  data:{
+    a:11
+  }
+})
+</script>
+
+</html>

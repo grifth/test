@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+<body>
+    <div id="app">
+        <elem></elem>
+    </div>
+</body>
+<script>
+    Vue.component('elem',{
+        render(createElement){
+            return createElement('div',{
+                'class':{
+                    foo:true,
+                },
+                style:{
+                    color:'red',
+                },
+                attrs:{
+                    id:'foo'
+                },
+                domProps:{
+                    innerHTML:'baz'
+                }
+            },[
+                createElement('h1',123)
+            ])
+        }
+    })
+    
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+
+        }
+    })
+</script>
+
+</html>
