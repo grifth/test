@@ -1,6 +1,7 @@
 var http = require('http')
 var fs = require('fs')
 var url = require('url')
+var md5 = require('md5')
 var server = http.createServer()
 let sessions = {}
 server.on('request', function (req, res) {
@@ -86,7 +87,7 @@ server.on('request', function (req, res) {
                 hash[key] = decodeURIComponent(value) // hash['email'] = '1'
             })
             let { email, password } = hash
-            
+
             var users = fs.readFileSync('./db/users', 'utf8')
             try {
                 users = JSON.parse(users) // []
@@ -101,8 +102,8 @@ server.on('request', function (req, res) {
                 }
             }
             if (found) {
-                let sessionId = Math.random()*100000
-                sessions[sessionId] = {sign_in_email:email}
+                let sessionId = Math.random() * 100000
+                sessions[sessionId] = { sign_in_email: email }
                 res.setHeader('Set-Cookie', `sessionId=${sessionId}`)
                 res.statusCode = 200
             } else {
@@ -114,7 +115,7 @@ server.on('request', function (req, res) {
         let string = fs.readFileSync('./index.html', 'utf8')
         if (req.headers.cookie) {
             let cookies = req.headers.cookie.split('; ') // ['email=1@', 'a=1', 'b=2']
-            
+
             let hash = {}
             for (let i = 0; i < cookies.length; i++) {
                 let parts = cookies[i].split('=')
@@ -123,16 +124,16 @@ server.on('request', function (req, res) {
                 hash[key] = value
             }
             let mySession = sessions[hash.sessionId]
-            let email 
-            if(mySession){
+            let email
+            if (mySession) {
                 email = mySession.sign_in_email
             }
-            
+
             let users = fs.readFileSync('./db/users', 'utf8')
 
             users = JSON.parse(users)
             let foundUser
-            
+
             for (let i = 0; i < users.length; i++) {
                 if (users[i].email === email) {
                     foundUser = users[i]
@@ -152,7 +153,29 @@ server.on('request', function (req, res) {
         res.setHeader('Content-Type', 'text/html;charset=utf-8')
         res.write(string)
         res.end()
+    } else if (path === '/img.jpg') {
+        var content = fs.readFileSync('./img.jpg', "binary");
+        let fileMD5 = md5(content)
+        res.setHeader("Content-Type", "image/jpeg");
+        res.setHeader("Cache-Control", 'max-age=30')
+        res.write(content, "binary");
+        res.end();
+    }else if(path==='/vue'){
+        let string = fs.readFileSync('./vue.js','utf8')
+        res.setHeader('Cache-Control','max-age=30')
+        res.setHeader('Content-Type','text/javascript;charset=utf8')
+        res.write(string)
+        res.end()
     }
+    // else if(path==='/video.mp4'){
+    //     res.writeHead(200, {'Content-Type': 'video/mp4'});  
+    //     var rs = fs.createReadStream('./video.mp4');  
+    //     rs.pipe(res);  
+    //     rs.on('end',function(){  
+    //       res.end();  
+    //       console.log('end call');  
+    //     }); 
+    // }
 })
 function readBody(request) {
     return new Promise((resolve, reject) => {
