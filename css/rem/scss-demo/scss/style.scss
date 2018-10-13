@@ -1,0 +1,12 @@
+
+@function px( $px ){
+@return $px/$designWidth*10 + rem;
+}
+$designWidth : 640;
+.box {
+  background: #ddd;
+  float: left;
+  width: px(320);
+  height: px(160);
+  margin: px(40);
+}

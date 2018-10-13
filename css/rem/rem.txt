@@ -1,0 +1,51 @@
+什么是rem 
+
+css有很多长度 单位 px像素 
+                   em(一个字的宽度)(等于当前元素的font-size)
+	           rem(等于根元素的font-size 根元素就是html元素)
+		   vh (viewport height 100vh===视口高度)
+		   vw (viewport width 100vw === 视口的高度)
+		   pt（不管没人用）ex(一个x的高度 也没人用)
+
+谷歌浏览器默认font-size 16px
+			
+         浏览器设置最小font-size 12px  在css中设置font-size 6px font-size依旧12px
+
+
+布局
+百分比布局 
+缺点 高度无法与宽度关联
+
+rem
+解决高度无法与宽度关联
+如何让高度是宽度的一半
+
+用js
+
+script
+
+var pageWidth = window.innerWidth
+document.write(`<style>html{font-size:${pageWidth}px;}</style>`)
+
+1rem = 1 pageWidth
+
+rem的微调
+以上script内 声明pageWidth之后 
+pageWidth = pageWidth/10
+
+通过sass px转换rem
+window 垃圾命令行  不玩了
+·
+·
+·
+·
+·
+·
+·
+卸载了 原来的sass 命令 重新装了 没装ruby
+
+sass --watch scss:css 
+
+监听 scss的文件
+
+
