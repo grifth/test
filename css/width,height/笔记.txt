@@ -1,0 +1,55 @@
+文档流normalflow 
+1，内联元素的宽高
+2，块级元素的宽高
+3，水平居中
+4，垂直居中
+5，文字溢出省略
+
+
+盒模型
+1，一比一的div
+2，outline
+3，border调试大法
+
+
+div的高度其实是由行高确定的
+div的高度是由 这个字的 font-size*建议行高
+行高与字体有关 不同的字体行高不同
+行高也可以自己写死
+
+div中如果只有一个内联元素 那么这个div的高度就是这个内联元素的行高
+
+html中 用&nbsp 代替 空格 no break space
+	$nbsp 的宽度 也是由 字体设计师决定的 
+
+两个 inline或者inline block元素 之间有tab，空格，回车 最后都会显示有空格
+
+div中文字居中
+不写height 
+用line-height + padding 居中
+
+div的上下margin合并
+解决办法 给父元素加上下border或padding  overflow:hidden 也能消除合并（不使用）
+
+div高度由内部文档流元素高度的总和决定的
+
+文档流
+内联元素 从左到右 
+块级元素 从上到下
+
+
+脱离文档流(算高度别算脱离文档流元素
+浮动
+position absolute
+	  fixed
+
+相对定位relative 不脱离文档流
+
+div中的div居中
+
+
+内联元素 padding margin 影响宽度不影响高度
+内联元素高度由行高决定 
+	宽度由padding margin 内容 border 决定
+
+1比1的div 设置padding-top

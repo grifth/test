@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://js.jirengu.com
+
+Copyright (c) 2018 by anonymous (http://js.jirengu.com/yoyazizuzu/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+<style id="jsbin-css">
+.baba{
+  border: 10px solid red;
+  min-height: 10px;
+  display: flow-root; /*触发BFC*/
+}
+.erzi{
+  background: green;
+  float:left;
+  width: 300px;
+  height: 100px;
+}
+</style>
+</head>
+<body>
+<div class="baba">
+  <div class="erzi">
+  </div>
+</div>
+</body>
+</html>
