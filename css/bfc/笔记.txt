@@ -21,10 +21,25 @@ block formation context 块级格式化上下文
 
 4,overflow不为visible的div
 
+
 *display:flow-root 让当前元素触发bfc 兼容性不好
 
 
 bfc的功能就是包住子容器的所有功能 即使 子元素浮动
+	功能2：兄弟之间划清界限
+
+
+关于margin合并 
+
+只有上下margin合并 左右不会合并
+
+相邻元素的margin合并 解决：无法解决 
+
+父子元素的margin合并 解决：加padding或border
+
+自身的margin合并 解决：加padding或border
+
+
+
 	 
-bfc里的元素若是bfc那么上下margin不会重叠 若不是 则会重叠
 

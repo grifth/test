@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        iframe{
+            width: 100%;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <!-- a标签与iframe 以及target属性 -->
+    <iframe name="xxx" src="" frameborder="0"></iframe>
+    <a href="https://www.baidu.com" target="_blank">a</a>
+    <a href="https://www.baidu.com" target="_self">a</a>
+    <a href="https://www.baidu.com" target="_parent">a</a>
+    <!--  如果与祖孙三代 那么parent和top 就有区别 只有一代top作用和parent一样 -->
+    <a href="https://www.baidu.com" target="_top">a</a>
+</body>
+</html>

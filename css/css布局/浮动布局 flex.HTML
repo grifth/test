@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .parent{
+            min-width: 400px;
+            background: #ddd;
+        }
+        .child:nth-child(1){
+            float: left;
+            width: 100px;
+            background: #333;
+            color:white;
+            text-align: center;
+            height: 36px;
+            line-height: 36px;
+        }
+        .child:nth-child(2){
+            float: right;
+        }
+        ul{
+            line-height: 24px;
+            padding: 6px 0;
+        }
+        ul>li{
+            float: left;
+            list-style: none;
+            margin-left: 20px;
+        }
+        .clearfix::after{
+            display: block;
+            clear: both;
+            content: ''
+        }
+        .banner{
+            width: 800px;height: 400px;
+            background: #888;
+            margin:  0 auto;
+            margin-top: 10px;
+        }
+        .pictures{
+            margin: 0 auto;
+            background: red;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+           width: 800px;
+        }
+        .picture{
+            width: 194px;
+            height: 194px;
+            background: #000;
+            margin-top: 4px;
+            margin-bottom: 4px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="parent clearfix">
+        <div class="child">logo</div>
+        <div class="child">
+            <ul class="clearfix">
+                <li>导航1</li>
+                <li>导航2</li>
+                <li>导航3</li>
+                <li>导航4</li>
+                <li>导航5</li>
+            </ul>
+        </div>
+    </div>
+    <div class="banner">
+        
+    </div>
+    <div class="pictures ">
+                <div class="picture"></div>
+                <div class="picture"></div>
+                <div class="picture"></div>
+                <div class="picture"></div>
+                <div class="picture"></div>
+                <div class="picture"></div>
+                <div class="picture"></div>
+                <div class="picture"></div>
+    </div>
+</body>
+</html>

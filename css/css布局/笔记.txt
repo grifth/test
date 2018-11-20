@@ -1,0 +1,10 @@
+float布局
+1.给儿子加上float:left
+2.给父元素加clearfix
+
+关于clearfix::after IE不支持 
+
+.clearfix{
+	zoom:1;
+}
+
